@@ -263,139 +263,175 @@ h2.section-title {
 }
 
 /* MOBILE RESPONSIVE STYLES */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     /* Container */
     .container {
-        padding: 0 16px;
+        padding: 0 16px !important;
+        max-width: 100% !important;
     }
     
     /* Brand Hero */
     .brand-hero {
-        margin: 30px 0;
+        margin: 20px 0 !important;
     }
     .brand-hero img {
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
     }
     
     /* Section Headers */
     .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        margin-bottom: 16px !important;
     }
     h2.section-title {
-        font-size: 24px;
+        font-size: 22px !important;
     }
     .section-subtitle {
-        font-size: 12px;
+        font-size: 12px !important;
     }
     
-    /* Shop by Room - Stack vertically */
+    /* Shop by Room - Stack vertically with full cover images */
     .shop-by-room {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        height: auto;
-        gap: 12px;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        height: auto !important;
+        gap: 12px !important;
+        margin-bottom: 40px !important;
     }
     .room-card {
-        min-height: 180px;
-        padding: 20px;
-    }
-    .room-card.large,
-    .room-card.tall,
-    .room-card.small-1,
-    .room-card.small-2 {
-        grid-column: 1;
-        grid-row: auto;
+        min-height: 200px !important;
+        padding: 20px !important;
+        width: 100% !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        background-size: cover !important;
+        background-position: center !important;
     }
     .room-card-content {
-        z-index: 2;
+        z-index: 2 !important;
     }
     .room-label {
-        font-size: 9px;
+        font-size: 10px !important;
     }
     .room-title {
-        font-size: 18px;
+        font-size: 20px !important;
     }
     .btn-white {
-        padding: 8px 16px;
-        font-size: 11px;
+        padding: 10px 18px !important;
+        font-size: 12px !important;
     }
     .room-link {
-        font-size: 10px;
-        padding: 6px 12px;
+        font-size: 11px !important;
+        padding: 8px 14px !important;
     }
     
-    /* Product Grid */
+/* Product Grid - 2 columns, full natural image size */
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 40px;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        margin-bottom: 40px !important;
+    }
+    .product-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
     }
     .product-card img {
-        height: 150px;
-        margin-bottom: 8px;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        margin-bottom: 10px !important;
+        object-fit: cover !important;
+        aspect-ratio: auto !important;
     }
     .product-info {
-        font-size: 11px;
+        font-size: 12px !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+    }
+    .product-info span {
+        display: block !important;
     }
     .product-price {
-        font-size: 11px;
+        font-size: 13px !important;
     }
     .product-rating {
-        font-size: 10px;
+        font-size: 11px !important;
     }
     
     /* Promo Section */
     .promo-section {
-        grid-template-columns: 1fr;
-        height: auto;
-        margin-bottom: 40px;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        height: auto !important;
+        margin-bottom: 40px !important;
     }
     .promo-content {
-        padding: 30px 20px;
-        min-height: 280px;
+        padding: 30px 20px !important;
+        min-height: 240px !important;
     }
     .promo-content h3 {
-        font-size: 26px;
+        font-size: 24px !important;
+        margin-bottom: 14px !important;
     }
     .promo-content p {
-        font-size: 13px;
+        font-size: 13px !important;
+        margin-bottom: 24px !important;
     }
     .promo-image {
-        height: 200px;
+        height: 240px !important;
+        width: 100% !important;
+        background-size: cover !important;
+        background-position: center !important;
     }
     
     /* Testimonials */
     .testimonials {
-        padding: 30px 0;
-        margin-bottom: 40px;
+        padding: 30px 0 !important;
+        margin-bottom: 40px !important;
     }
     .testimonials-title {
-        font-size: 20px;
-        margin-bottom: 30px;
+        font-size: 20px !important;
+        margin-bottom: 28px !important;
     }
     .testimonial-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
     }
     .testimonial-card {
-        padding: 20px;
+        padding: 20px !important;
     }
     .testimonial-text {
-        font-size: 12px;
+        font-size: 13px !important;
     }
 }
 
-/* SMALL MOBILE */
-@media (max-width: 480px) {
+/* EXTRA SMALL MOBILE */
+@media only screen and (max-width: 480px) {
+    .container {
+        padding: 0 14px !important;
+    }
     .product-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
     }
     .product-card img {
-        height: 200px;
+        min-height: 140px !important;
     }
     .promo-content h3 {
-        font-size: 22px;
+        font-size: 20px !important;
+    }
+    .promo-content {
+        padding: 24px 16px !important;
     }
 }
