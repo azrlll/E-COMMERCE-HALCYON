@@ -1,0 +1,360 @@
+/* ACCOUNT PAGE STYLES */
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    display: flex;
+    gap: 40px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    flex-shrink: 0;
+}
+.sidebar-header {
+    margin-bottom: 32px;
+    padding-left: 16px;
+}
+.sidebar-header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 4px;
+}
+.sidebar-header p {
+    font-size: 12px;
+    color: #666;
+}
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.sidebar-nav a:hover {
+    background-color: #f3f4f6;
+}
+.sidebar-nav a.active {
+    color: #0f4a8a;
+    font-weight: 800;
+    border-left: 3px solid #0f4a8a;
+    border-radius: 0 4px 4px 0;
+    background-color: transparent;
+}
+.sidebar-nav a.active svg {
+    color: #0f4a8a;
+}
+.sidebar-nav svg {
+    width: 18px;
+    height: 18px;
+    color: #555;
+}
+.sidebar-divider {
+    height: 1px;
+    background-color: #eaeaea;
+    margin: 16px 0;
+}
+.sidebar-nav a.logout {
+    color: #d32f2f;
+}
+.sidebar-nav a.logout svg {
+    color: #d32f2f;
+}
+
+/* MAIN CONTENT */
+.account-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.panel-header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.panel-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 4px;
+}
+.panel-subtitle {
+    font-size: 13px;
+    color: #666;
+}
+.link-action {
+    font-size: 12px;
+    font-weight: 800;
+    color: #8c7e4c;
+    text-decoration: underline;
+}
+
+/* FORMS */
+.form-group {
+    margin-bottom: 20px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.form-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+.form-control {
+    width: 100%;
+    background-color: #f3f4f6;
+    border: 1px solid transparent;
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #111;
+    font-family: inherit;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #0f4a8a;
+    background-color: #fff;
+}
+textarea.form-control {
+    resize: none;
+    height: 80px;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+}
+.btn-cancel {
+    background: #e5e7eb;
+    color: #111;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+.btn-save {
+    background: #0f4a8a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 24px;
+    border-radius: 4px;
+}
+
+/* RECENT ORDERS */
+.order-active {
+    border-left: 3px solid #0f4a8a;
+    padding-left: 20px;
+    margin-bottom: 24px;
+}
+.order-status-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #8c7e4c;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+.order-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.order-info h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 4px;
+}
+.order-info p {
+    font-size: 11px;
+    color: #666;
+}
+.order-images {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.order-images img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #eee;
+}
+.order-more {
+    width: 40px;
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #333;
+}
+
+/* Progress Bar (Horizontal) */
+.progress-track {
+    position: relative;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+.progress-line-bg {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: #e5e7eb;
+    z-index: 1;
+}
+.progress-line-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #0f4a8a;
+    width: 66%; /* progress percentage */
+}
+.progress-nodes {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.node-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #e5e7eb;
+}
+.node.active .node-dot {
+    background: #0f4a8a;
+}
+.node-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+}
+.node.active .node-label {
+    color: #111;
+}
+
+/* Past Order Item */
+.past-order {
+    background: #f9fafb;
+    padding: 16px 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.past-order-info h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 2px;
+}
+.past-order-info p {
+    font-size: 11px;
+    color: #666;
+}
+.btn-white {
+    background: #fff;
+    color: #111;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 2-Col Panels Grid */
+.panels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Checkboxes */
+.pref-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+}
+.pref-item:last-child {
+    margin-bottom: 0;
+}
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #0f4a8a;
+    cursor: pointer;
+}
+
+.btn-outline {
+    width: 100%;
+    border: 2px solid #0f4a8a;
+    background: #fff;
+    color: #0f4a8a;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+.auth-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #555;
+}
+.auth-status svg {
+    color: #8c7e4c;
+    width: 16px;
+    height: 16px;
+}

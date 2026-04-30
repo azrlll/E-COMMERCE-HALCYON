@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Orders - Halcyon Home</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/trackorder.css" />
+
+</head>
+<body>
+
+<main class="account-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>My Account</h2>
+                <p>Manage your sanctuary</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="details.html">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    Personal Details
+                </a>
+                <a href="trackorder.html" class="active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    Track Orders
+                </a>
+                <a href="#" onclick="showSection('wishlist')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    Wishlist
+                </a>
+                <a href="#" onclick="showSection('settings')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Settings
+                </a>
+                
+                <div class="sidebar-divider"></div>
+                
+                <a href="index.html" class="logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Log Out
+                </a>
+            </nav>
+        </aside>
+
+<div class="account-content">
+        
+            <div class="page-header">
+                <h1>Track Orders</h1>
+                <p>Keep an eye on your latest Nordic additions as they make their way to your home sanctuary.</p>
+            </div>
+
+            <div class="section-label">CURRENT SHIPMENTS</div>
+
+            <div class="shipment-card">
+                <div class="shipment-img">
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Lounge Chair">
+                </div>
+                <div class="shipment-details">
+                    <div class="shipment-header">
+                        <span class="order-number">ORDER #HLY-88219</span>
+                        <span class="badge-transit">IN TRANSIT</span>
+                    </div>
+                    <h2 class="product-title">Sjöholm Lounge Chair — Oak</h2>
+                    
+                    <div class="progress-container">
+                        <div class="progress-line">
+                            <div class="progress-line-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="step active">
+                                <div class="step-dot"></div>
+                                <span class="step-label">CONFIRMED</span>
+                            </div>
+                            <div class="step active">
+                                <div class="step-dot"></div>
+                                <span class="step-label">SHIPPED</span>
+                            </div>
+                            <div class="step active">
+                                <div class="step-dot"></div>
+                                <span class="step-label">TRANSIT</span>
+                            </div>
+                            <div class="step">
+                                <div class="step-dot"></div>
+                                <span class="step-label">ARRIVAL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="expected-arrival">Expected Arrival: Thursday, Oct 24th</p>
+                    
+                    <div class="shipment-actions">
+                        <button class="btn-primary">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            View Progress
+                        </button>
+                        <button class="btn-secondary">Order Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label dark">ORDER HISTORY</div>
+
+            <div class="history-grid">
+                <div class="history-card">
+                    <div class="history-header">
+                        <span class="order-number">#HLY-77102</span>
+                        <span class="status-delivered">DELIVERED</span>
+                    </div>
+                    <h3 class="history-title">Mora Glass Vase</h3>
+                    <p class="history-date">Delivered Sep 12, 2026</p>
+                    <a href="#" class="link-action">Buy Again</a>
+                </div>
+
+                <div class="history-card" style="padding-top: 0;">
+                    <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80" alt="Floor Lamp" class="history-card-img">
+                    <div class="history-header">
+                        <span class="order-number">#HLY-76988</span>
+                        <span class="status-delivered">DELIVERED</span>
+                    </div>
+                    <h3 class="history-title">Fjord Floor Lamp</h3>
+                    <p class="history-date">Delivered Aug 28, 2026</p>
+                    <div class="history-actions">
+                        <button class="btn-secondary">Write a Review</button>
+                        <a href="#" class="link-action">Order Support</a>
+                    </div>
+                </div>
+
+                <div class="history-card">
+                    <div class="history-header">
+                        <span class="order-number">#HLY-76541</span>
+                        <span class="status-delivered">DELIVERED</span>
+                    </div>
+                    <h3 class="history-title">Uppsala Wool Throw</h3>
+                    <p class="history-date">Delivered Aug 15, 2026</p>
+                    <a href="#" class="link-action">Buy Again</a>
+                </div>
+            </div>
+
+            <div class="wide-card">
+                <div class="wide-card-left">
+                    <div class="wide-card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                    </div>
+                    <div class="wide-card-info">
+                        <h4>Nordic Dining Set (8 pcs)</h4>
+                        <p>Order #HLY-75432 — Delivered Jul 30, 2026</p>
+                    </div>
+                </div>
+                <button class="btn-white">Reorder</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/global.js"></script>
+</body>
+</html>

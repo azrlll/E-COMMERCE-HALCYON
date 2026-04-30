@@ -1,0 +1,325 @@
+/* PRODUCT DETAIL PAGE STYLES */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    font-size: 10px;
+    font-weight: 800;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+}
+.breadcrumbs span {
+    color: #111;
+}
+
+/* Layout Grid */
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+/* --- Left Column: Images --- */
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.main-image {
+    width: 100%;
+    height: 600px;
+    background-color: #f4f5f5;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+.thumbnail-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+.thumbnail {
+    aspect-ratio: 1;
+    background-color: #f4f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+    padding: 2px;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    mix-blend-mode: multiply;
+}
+.thumbnail.active {
+    border-color: #0052a3; /* Brand Blue */
+}
+
+/* --- Right Column: Details --- */
+.product-details {
+    padding-top: 10px;
+}
+
+.badge-exclusive {
+    display: inline-block;
+    background-color: #fcd535;
+    color: #111;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.product-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+}
+
+.price-review-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.product-price {
+    font-size: 24px;
+    font-weight: 900;
+    color: #111;
+}
+.product-reviews {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+}
+.stars {
+    color: #a68a2d; /* Gold star color */
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Options */
+.option-group {
+    margin-bottom: 32px;
+}
+.option-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* Swatches */
+.swatch-list {
+    display: flex;
+    gap: 12px;
+}
+.swatch-wrapper {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.swatch-wrapper.active {
+    border-color: #111;
+}
+.swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Upholstery Buttons */
+.upholstery-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.uph-btn {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.uph-btn.active {
+    background-color: #f4f5f5;
+    border-color: #d1d5db;
+    color: #111;
+}
+.uph-btn:hover:not(.active) {
+    border-color: #ccc;
+}
+
+/* Actions */
+.product-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.btn-add-cart {
+    flex: 1;
+    background-color: #0052a3; /* Brand Blue */
+    color: #fff;
+    border: none;
+    padding: 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-add-cart:hover {
+    background-color: #004080;
+}
+.btn-wishlist {
+    width: 56px;
+    height: 56px;
+    background-color: #e5e7eb;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #111;
+    transition: background 0.2s;
+}
+.btn-wishlist:hover {
+    background-color: #d1d5db;
+}
+.btn-wishlist svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Accordions */
+.accordion {
+    border-top: 1px solid #eaeaea;
+}
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 800;
+    color: #111;
+}
+.accordion-header svg {
+    width: 16px;
+    height: 16px;
+    color: #666;
+    transition: transform 0.2s;
+}
+.accordion-content {
+    padding-bottom: 20px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+}
+.accordion.closed .accordion-content {
+    display: none;
+}
+.accordion.open .accordion-header svg {
+    transform: rotate(180deg);
+}
+
+/* --- Cross Sell Section --- */
+.cross-sell {
+    margin-top: 80px;
+}
+.cross-sell h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+}
+.cross-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.cross-card {
+    text-decoration: none;
+    color: inherit;
+}
+.cross-img {
+    width: 100%;
+    height: 340px;
+    background-color: #f4f5f5;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    mix-blend-mode: multiply;
+}
+.cross-tag {
+    font-size: 9px;
+    font-weight: 800;
+    color: #8c7e4c; /* Gold/Olive */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+}
+.cross-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 4px;
+}
+.cross-price {
+    font-size: 13px;
+    color: #666;
+}

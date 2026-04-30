@@ -1,0 +1,300 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.services-header {
+    padding: 60px 0 40px;
+}
+.services-header h1 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+.services-header p {
+    font-size: 14px;
+    color: #555;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Bento Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+.service-card {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+}
+
+/* Card 1: Scheduled Delivery */
+.card-1 {
+    grid-column: 1 / span 2;
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0) 100%
+        )
+        url("/images/services.jpg");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    padding: 40px;
+    min-height: 280px;
+}
+.tag-white-glove {
+    font-size: 10px;
+    font-weight: 800;
+    color: #b59838;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+.card-1 h2 {
+    font-size: 24px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+.card-1 p {
+    font-size: 13px;
+    color: #444;
+    max-width: 380px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+.btn-blue {
+    background-color: #0f4a8a;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Card 2 & 3: Small Info Cards */
+.card-2 {
+    grid-column: 3 / span 1;
+    justify-content: flex-start;
+}
+.card-3 {
+    grid-column: 1 / span 1;
+    background: #e5e7eb;
+    justify-content: flex-start;
+}
+.card-icon {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.card-icon svg {
+    width: 18px;
+    height: 18px;
+    color: #0f4a8a;
+}
+.small-card-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+.small-card-text {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.card-link {
+    font-size: 12px;
+    font-weight: 800;
+    color: #0f4a8a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+}
+
+/* Card 4: Image Card */
+.card-4 {
+    grid-column: 2 / span 2;
+    background-image: url("https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80");
+    background-size: cover;
+    background-position: center;
+    min-height: 350px;
+    justify-content: flex-end;
+    padding: 32px;
+}
+.card-4::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 1;
+}
+.card-4-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+.card-4-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+.card-4-text {
+    font-size: 11px;
+    color: #e5e7eb;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: #f3f4f6;
+    padding: 80px 0;
+}
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.faq-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.faq-header h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+.faq-header p {
+    font-size: 13px;
+    color: #555;
+}
+.faq-item {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+.faq-item svg {
+    width: 16px;
+    height: 16px;
+    color: #666;
+}
+
+/* Forms Section */
+.forms-section {
+    padding: 80px 0;
+}
+.forms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+.form-col h3 {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 6px;
+}
+.form-col p {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 24px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.form-group {
+    margin-bottom: 16px;
+}
+.form-control {
+    width: 100%;
+    background: #f8f9fa;
+    border: 1px solid transparent;
+    padding: 14px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #111;
+    font-family: inherit;
+}
+.form-control:focus {
+    outline: none;
+    background: #fff;
+    border-color: #d1d5db;
+}
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+}
+textarea.form-control {
+    resize: none;
+    height: 120px;
+}
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-blue-full {
+    background-color: #00428a;
+}
+.btn-gold-full {
+    background-color: #786016;
+}

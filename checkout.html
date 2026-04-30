@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Halcyon Home</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+    <link rel="stylesheet" href="css/checkout-forms.css" />
+</head>
+<body>
+
+    <main class="container">
+        
+        <div class="checkout-header">
+            <h1>Checkout</h1>
+            <p>Review your details and finalize your order.</p>
+        </div>
+
+        <div class="checkout-grid">
+            
+            <div class="checkout-forms">
+                
+                <section class="form-section">
+                    <h2 class="section-title">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        Delivery Details
+                    </h2>
+                    
+                    <div class="form-row">
+                        <div>
+                            <label class="form-label">FIRST NAME</label>
+                            <input type="text" class="form-control" value="Kevin Christopher">
+                        </div>
+                        <div>
+                            <label class="form-label">LAST NAME</label>
+                            <input type="text" class="form-control" value="Real">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">EMAIL ADDRESS</label>
+                        <input type="email" class="form-control" value="kevin.r@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">PHONE NUMBER</label>
+                        <input type="tel" class="form-control" placeholder="+63 900 000 0000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">APARTMENT / SUITE / BUILDING</label>
+                        <input type="text" class="form-control" placeholder="Unit 1204, Azure Tower">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div>
+                            <label class="form-label">CITY</label>
+                            <input type="text" class="form-control" value="Quezon City">
+                        </div>
+                        <div>
+                            <label class="form-label">POSTAL CODE</label>
+                            <input type="text" class="form-control" placeholder="1400">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">REGION</label>
+                        <select class="form-control">
+                            <option value="metro-manila" selected>Metro Manila</option>
+                            <option value="luzon">Luzon</option>
+                            <option value="visayas">Visayas</option>
+                            <option value="mindanao">Mindanao</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2 class="section-title">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        Payment Method
+                    </h2>
+                    
+                    <div class="payment-grid">
+                        
+<div class="payment-card active" data-method="card" onclick="selectPayment('card')">
+                            <div class="radio-indicator"></div>
+                            <div class="payment-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            </div>
+                            <div class="payment-name">Credit / Debit Card</div>
+                            <div class="payment-desc">Visa, Mastercard, JCB</div>
+                        </div>
+
+<div class="payment-card" data-method="gcash" onclick="selectPayment('gcash')">
+                            <div class="radio-indicator"></div>
+                            <div class="payment-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div class="payment-name">GCash</div>
+                            <div class="payment-desc">Mobile Wallet</div>
+                        </div>
+
+<div class="payment-card" data-method="maya" onclick="selectPayment('maya')">
+                            <div class="radio-indicator"></div>
+                            <div class="payment-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                            </div>
+                            <div class="payment-name">Maya</div>
+                            <div class="payment-desc">Digital Bank</div>
+                        </div>
+
+<div class="payment-card" data-method="paypal" onclick="selectPayment('paypal')">
+                            <div class="radio-indicator"></div>
+                            <div class="payment-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            </div>
+                            <div class="payment-name">PayPal</div>
+                            <div class="payment-desc">International Checkout</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Card Payment Form -->
+                    <div id="card-form" class="payment-form-section" style="display:block;">
+                        <div class="form-group">
+                            <label class="form-label">CARD NUMBER</label>
+                            <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">EXPIRY</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CVC</label>
+                                <input type="text" class="form-control" placeholder="123" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GCash Payment Form -->
+                    <div id="gcash-form" class="payment-form-section" style="display:none;">
+                        <div class="form-group">
+                            <label class="form-label">GCASH NUMBER</label>
+                            <input type="tel" class="form-control" placeholder="+63 917 123 4567">
+                        </div>
+                    </div>
+
+                    <!-- Maya Payment Form -->
+                    <div id="maya-form" class="payment-form-section" style="display:none;">
+                        <div class="form-group">
+                            <label class="form-label">MAYA NUMBER</label>
+                            <input type="tel" class="form-control" placeholder="+63 917 123 4567">
+                        </div>
+                    </div>
+
+                    <!-- PayPal Payment Form -->
+                    <div id="paypal-form" class="payment-form-section" style="display:none;">
+                        <div class="form-group">
+                            <label class="form-label">PAYPAL EMAIL</label>
+                            <input type="email" class="form-control" placeholder="user@paypal.com">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="summary-wrapper">
+                <div class="summary-card">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="order-items">
+                        
+                        <div class="order-item">
+                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=150&q=80" alt="Dining Chair" class="order-img">
+                            <div class="order-details">
+                                <h3 class="order-name">LYSBERG Dining Chair</h3>
+                                <p class="order-meta">OAK / NATURAL FABRIC</p>
+                                <div class="order-price-row">
+                                    <span class="order-qty">Qty: 2</span>
+                                    <span class="order-price">₱12,400.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-item">
+                            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=150&q=80" alt="Floor Lamp" class="order-img">
+                            <div class="order-details">
+                                <h3 class="order-name">ARÖD Floor Lamp</h3>
+                                <p class="order-meta">MATTE BLACK</p>
+                                <div class="order-price-row">
+                                    <span class="order-qty">Qty: 1</span>
+                                    <span class="order-price">₱4,590.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="totals-section">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span>₱16,990.00</span>
+                        </div>
+                        <div class="total-row free">
+                            <span>Shipping</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Estimated Tax</span>
+                            <span>₱2,038.80</span>
+                        </div>
+                    </div>
+
+                    <div class="final-total">
+                        <span class="final-label">Total</span>
+                        <div class="final-price-wrapper">
+                            <span class="currency">PHP</span>
+                            <span class="final-price">₱19,028.80</span>
+                        </div>
+                    </div>
+
+<button class="btn-complete" onclick="completePurchase()">Complete Purchase</button>
+                    
+                    <div class="secure-badge">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Secure encrypted checkout
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+<script src="js/global.js"></script>
+    <script src="js/database.js"></script>
+    <script>
+    // Global payment selection function - works immediately
+    function selectPayment(method) {
+        var cards = document.querySelectorAll('.payment-card');
+        var cardForm = document.getElementById('card-form');
+        var gcashForm = document.getElementById('gcash-form');
+        var mayaForm = document.getElementById('maya-form');
+        var paypalForm = document.getElementById('paypal-form');
+        
+        cards.forEach(function(c) {
+            c.classList.remove('active');
+            if (c.dataset.method === method) {
+                c.classList.add('active');
+            }
+        });
+        
+        // Hide all forms
+        if (cardForm) cardForm.style.display = 'none';
+        if (gcashForm) gcashForm.style.display = 'none';
+        if (mayaForm) mayaForm.style.display = 'none';
+        if (paypalForm) paypalForm.style.display = 'none';
+        
+        // Show selected form
+        if (method === 'card' && cardForm) cardForm.style.display = 'block';
+        else if (method === 'gcash' && gcashForm) gcashForm.style.display = 'block';
+        else if (method === 'maya' && mayaForm) mayaForm.style.display = 'block';
+else if (method === 'paypal' && paypalForm) paypalForm.style.display = 'block';
+    }
+
+    // Complete Purchase - saves order to localStorage
+    function completePurchase() {
+        // Get delivery details
+        var firstName = document.querySelector('input[value="Kevin Christopher"]').value;
+        var lastName = document.querySelector('input[value="Real"]').value;
+        var email = document.querySelector('input[type="email"]').value;
+        var phone = document.querySelector('input[type="tel"]').value;
+        var apartment = document.querySelector('input[placeholder="Unit 1204, Azure Tower"]').value;
+        var city = document.querySelector('input[value="Quezon City"]').value;
+        var postal = document.querySelector('input[placeholder="1400"]').value;
+        var region = document.querySelector('select').value;
+        
+        // Get selected payment method
+        var activeCard = document.querySelector('.payment-card.active');
+        var paymentMethod = activeCard ? activeCard.querySelector('.payment-name').textContent : 'Credit / Debit Card';
+        
+        // Get order totals from summary
+        var subtotal = 16990;
+        var tax = 2038.80;
+        var total = 19028.80;
+        
+        // Create order object
+        var order = {
+            id: 'ORD-' + Date.now(),
+            date: new Date().toISOString(),
+            customer: {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                phone: phone,
+                address: apartment + ', ' + city + ' ' + postal,
+                region: region
+            },
+            items: [
+                { name: 'LYSBERG Dining Chair', qty: 2, price: 12400 },
+                { name: 'ARÖD Floor Lamp', qty: 1, price: 4590 }
+            ],
+            subtotal: subtotal,
+            tax: tax,
+            shipping: 'FREE',
+            total: total,
+            paymentMethod: paymentMethod,
+            status: 'Processing'
+        };
+        
+        // Save to localStorage orders array
+        var orders = JSON.parse(localStorage.getItem('halcyon_orders') || '[]');
+        orders.unshift(order);
+        localStorage.setItem('halcyon_orders', JSON.stringify(orders));
+        
+        // Clear cart
+        localStorage.setItem('halcyon_cart', JSON.stringify({ items: [], subtotal: 0 }));
+        
+        // Update cart badge
+        if (typeof updateCartBadge === 'function') updateCartBadge();
+        
+        // Show success and redirect
+        alert('Order placed successfully! Order ID: ' + order.id);
+        window.location.href = 'trackorder.html';
+    }
+    </script>
+    <script src="js/products.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Details - Halcyon Home</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/details.css" />
+</head>
+<body>
+
+    <main class="account-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>My Account</h2>
+                <p>Manage your sanctuary</p>
+            </div>
+<nav class="sidebar-nav">
+                <a href="details.html" class="active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    Personal Details
+                </a>
+                <a href="trackorder.html">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    Track Orders
+                </a>
+                <a href="#" onclick="showSection('wishlist')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    Wishlist
+                </a>
+                <a href="#" onclick="showSection('settings')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Settings
+                </a>
+                
+                <div class="sidebar-divider"></div>
+                
+                <a href="index.html" class="logout" onclick="logout()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Log Out
+                </a>
+            </nav>
+        </aside>
+
+        <div class="account-content">
+            
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h3 class="panel-title">Personal Details</h3>
+                        <p class="panel-subtitle">Update your information and address book</p>
+                    </div>
+                </div>
+                
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">FIRST NAME</label>
+                            <input type="text" class="form-control" value="Kevin Christopher">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">LAST NAME</label>
+                            <input type="text" class="form-control" value="Real">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">EMAIL ADDRESS</label>
+                        <input type="email" class="form-control" value="kevin.r@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">DEFAULT SHIPPING ADDRESS</label>
+                        <textarea class="form-control">Quezon City, Metro Manila,&#10;Philippines</textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel">Cancel</button>
+                        <button type="button" class="btn-save">Save Changes</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <h3 class="panel-title">Recent Orders</h3>
+                        <p class="panel-subtitle">Status of your latest acquisitions</p>
+                    </div>
+                    <a href="#" class="link-action">View All History</a>
+                </div>
+
+                <div class="order-active">
+                    <div class="order-status-label">IN TRANSIT</div>
+                    <div class="order-header-row">
+                        <div class="order-info">
+                            <h4>Order #HH-94821</h4>
+                            <p>Placed on Oct 12, 2026 • Est. Delivery: Oct 24</p>
+                        </div>
+                        <div class="order-images">
+                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=100&q=80" alt="Item">
+                            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=100&q=80" alt="Item">
+                            <div class="order-more">+1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-track">
+                        <div class="progress-line-bg">
+                            <div class="progress-line-active"></div>
+                        </div>
+                        <div class="progress-nodes">
+                            <div class="node active">
+                                <div class="node-dot"></div>
+                                <span class="node-label">CONFIRMED</span>
+                            </div>
+                            <div class="node active">
+                                <div class="node-dot"></div>
+                                <span class="node-label">PROCESSED</span>
+                            </div>
+                            <div class="node active">
+                                <div class="node-dot" style="box-shadow: 0 0 0 4px #e0ebf5;"></div>
+                                <span class="node-label">SHIPPED</span>
+                            </div>
+                            <div class="node">
+                                <div class="node-dot"></div>
+                                <span class="node-label" style="color: #ccc;">DELIVERED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="past-order">
+                    <div class="past-order-info">
+                        <h4>Order #HH-92014</h4>
+                        <p>Delivered on Sept 14, 2026</p>
+                    </div>
+                    <button class="btn-white">REORDER</button>
+                </div>
+            </section>
+
+            <div class="panels-grid">
+                
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3 class="panel-title" style="font-size: 16px;">Notification Preferences</h3>
+                    </div>
+                    <div class="pref-item">
+                        <span>Order updates via Email</span>
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="pref-item">
+                        <span>New collection alerts</span>
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="pref-item">
+                        <span>Newsletter & Editorial</span>
+                        <input type="checkbox">
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3 class="panel-title" style="font-size: 16px;">Security</h3>
+                    </div>
+                    <p class="panel-subtitle">Update your password to keep your sanctuary secure.</p>
+                    <button class="btn-outline">Reset Password</button>
+                    
+                    <div class="auth-status">
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        TWO-FACTOR AUTHENTICATION ENABLED
+                    </div>
+                </section>
+                
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

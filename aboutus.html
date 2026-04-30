@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About Us - Halcyon Home</title>
+
+        <link rel="stylesheet" href="css/global.css" />
+        <link rel="stylesheet" href="css/aboutus.css" />
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <section class="story-header">
+                    <div class="story-content">
+                        <span class="story-label">Our Story</span>
+                        <h1>Get to Know Us.</h1>
+                        <p>
+                            Founded in 1994, HALCYON HOME began as a small
+                            workshop dedicated to the belief that high-quality
+                            design shouldn't be a luxury. We believe in the
+                            power of a well-curated living space to transform
+                            daily life.
+                        </p>
+                    </div>
+                    <div class="story-meta">
+                        ESTABLISHED 1994 • STOCKHOLM ORIGINS
+                    </div>
+                </section>
+
+                <section class="vision-grid">
+                    <img
+                        src="images/about-page-get-to-know-us.jpg"
+                        alt="Minimalist living room"
+                        class="vision-img-large"
+                    />
+                    <div class="vision-right">
+                        <div class="vision-text-box">
+                            <h2>The Vision</h2>
+                            <p>
+                                Our journey started with a single chair and a
+                                commitment to democratic design. Today, we
+                                curate collections that balance aesthetic purity
+                                with the messy, beautiful reality of everyday
+                                life.
+                            </p>
+                        </div>
+                        <img
+                            src="images/about-page-vision.png"
+                            alt="Design tools on a desk"
+                            class="vision-img-small"
+                        />
+                    </div>
+                </section>
+            </div>
+
+            <section class="commitment-section">
+                <h2>Our<br />Commitment</h2>
+                <div class="cards-grid">
+                    <div class="commitment-card">
+                        <svg
+                            class="card-icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                            ></path>
+                        </svg>
+                        <h3>Sustainability</h3>
+                        <p>
+                            By 2030, we aim for 100% circularity. All our wood
+                            is FSC-certified, and our textiles are sourced from
+                            responsible partners who prioritize the planet.
+                        </p>
+                    </div>
+                    <div class="commitment-card">
+                        <svg
+                            class="card-icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"
+                            ></path>
+                        </svg>
+                        <h3>Quality Materials</h3>
+                        <p>
+                            We don't believe in "fast furniture." Every piece is
+                            tested for longevity, using solid oaks, tempered
+                            glass, and reinforced steel that matures with age.
+                        </p>
+                    </div>
+                    <div class="commitment-card">
+                        <svg
+                            class="card-icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                            ></path>
+                        </svg>
+                        <h3>Affordable Design</h3>
+                        <p>
+                            By optimizing our supply chain and focusing on
+                            flat-pack innovation, we pass the savings directly
+                            to you without compromising on the designer
+                            aesthetic.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="js/global.js"></script>
+        <script src="js/database.js"></script>
+        <script src="js/products.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const navLinks = document.querySelectorAll(".header-nav a");
+                navLinks.forEach((link) => link.classList.remove("active"));
+                navLinks[3].classList.add("active");
+            });
+        </script>
+    </body>
+</html>

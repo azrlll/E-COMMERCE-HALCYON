@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Halcyon Home</title>
+    
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/cart.css" />
+</head>
+<body>
+
+    <main class="container">
+        
+        <div class="cart-header">
+            <h1>Your Curated Collection</h1>
+            <p>3 ITEMS SELECTED FOR YOUR INTERIOR</p>
+        </div>
+
+        <div class="cart-grid">
+            
+            <div class="cart-items">
+                
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Lounge Chair">
+                    </div>
+                    <div class="item-details">
+                        <span class="item-tag">NEW ARRIVAL</span>
+                        <div class="item-header-row">
+                            <h3 class="item-title">Elysian Oak Lounge Chair</h3>
+                            <span class="item-price">$1,240.00</span>
+                        </div>
+                        <p class="item-subtitle">Natural Oak / Ivory Wool</p>
+                        
+                        <div class="item-controls">
+                            <div class="qty-selector">
+                                <button class="qty-btn">&minus;</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn">+</button>
+                            </div>
+                            <button class="btn-remove">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80" alt="Table Lamp">
+                    </div>
+                    <div class="item-details">
+                        <span class="item-tag muted">SKU: HL-4092</span>
+                        <div class="item-header-row">
+                            <h3 class="item-title">Aura Sculptural Table Lamp</h3>
+                            <span class="item-price">$485.00</span>
+                        </div>
+                        <p class="item-subtitle">Brushed Brass / Frosted Glass</p>
+                        
+                        <div class="item-controls">
+                            <div class="qty-selector">
+                                <button class="qty-btn">&minus;</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn">+</button>
+                            </div>
+                            <button class="btn-remove">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1562582664-8a8803c031ca?auto=format&fit=crop&w=400&q=80" alt="Rug">
+                    </div>
+                    <div class="item-details">
+                        <span class="item-tag muted">MATERIAL: JUTE & WOOL</span>
+                        <div class="item-header-row">
+                            <h3 class="item-title">Strata Hand-Woven Rug</h3>
+                            <span class="item-price">$890.00</span>
+                        </div>
+                        <p class="item-subtitle">Pebble Grey / 8' x 10'</p>
+                        
+                        <div class="item-controls">
+                            <div class="qty-selector">
+                                <button class="qty-btn">&minus;</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn">+</button>
+                            </div>
+                            <button class="btn-remove">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="summary-wrapper">
+                <div class="summary-card">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="val">$2,615.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping fee</span>
+                        <span class="val">$45.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated Tax</span>
+                        <span class="val">$209.20</span>
+                    </div>
+                    
+                    <div class="summary-divider"></div>
+                    
+                    <div class="total-row">
+                        <span class="total-label">Total</span>
+                        <span class="total-price">$2,869.20</span>
+                    </div>
+                    
+                    <a href="checkout.html"><button class="btn-checkout">
+                        Checkout Now 
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </button>
+                    
+                    <div class="trust-badge">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <p>Secure payment processing with high-level encryption.</p>
+                    </div>
+                    <div class="trust-badge">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        <p>Complimentary white-glove delivery on orders over $2,500.</p>
+                    </div>
+                </div>
+
+                <div class="promo-section">
+                    <h3>PROMOTIONAL CODE</h3>
+                    <div class="promo-input-group">
+                        <input type="text" class="promo-input" placeholder="Enter code">
+                        <button class="btn-apply">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/global.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
