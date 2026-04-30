@@ -257,3 +257,123 @@
     width: 14px;
     height: 14px;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    
+    .breadcrumbs {
+        font-size: 9px !important;
+        margin-bottom: 16px !important;
+    }
+    
+    .page-title {
+        font-size: 28px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .page-desc {
+        max-width: 100% !important;
+        margin-bottom: 32px !important;
+    }
+    
+    /* Layout - sidebar becomes top horizontal scroll */
+    .listing-layout {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    
+    /* Sidebar */
+    .filter-group {
+        margin-bottom: 24px;
+    }
+    .filter-title {
+        font-size: 10px !important;
+        margin-bottom: 12px !important;
+    }
+    .filter-opt {
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Toolbar */
+    .toolbar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    
+    /* Product Grid - 2 columns */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        margin-bottom: 40px !important;
+    }
+    
+    .product-img-wrapper {
+        height: 200px !important;
+    }
+    
+    .product-name {
+        font-size: 12px !important;
+        max-width: 90% !important;
+    }
+    
+    .product-price {
+        font-size: 12px !important;
+    }
+    
+    .product-material {
+        font-size: 10px !important;
+    }
+    
+    .product-rating {
+        font-size: 9px !important;
+    }
+    
+    .badge {
+        font-size: 8px !important;
+        padding: 3px 8px !important;
+    }
+    
+    /* Pagination */
+    .pagination {
+        gap: 6px !important;
+    }
+    .page-item {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .page-title {
+        font-size: 24px !important;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .product-img-wrapper {
+        height: 160px !important;
+    }
+    
+    .product-name {
+        font-size: 11px !important;
+    }
+    
+    .product-price {
+        font-size: 11px !important;
+    }
+}

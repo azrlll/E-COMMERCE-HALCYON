@@ -358,3 +358,156 @@ input[type="checkbox"] {
     width: 16px;
     height: 16px;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .account-container {
+        flex-direction: column !important;
+        padding: 24px 16px 60px !important;
+        gap: 24px !important;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 100% !important;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .sidebar-header {
+        margin-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+    .sidebar-nav {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    .sidebar-nav a {
+        padding: 10px 12px !important;
+        font-size: 12px !important;
+    }
+    .sidebar-divider {
+        display: none !important;
+    }
+    
+    /* Account Content */
+    .account-content {
+        width: 100% !important;
+    }
+    .panel {
+        padding: 20px !important;
+    }
+    .panel-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    .panel-title {
+        font-size: 18px !important;
+    }
+    .panel-subtitle {
+        font-size: 12px !important;
+    }
+    .link-action {
+        font-size: 11px !important;
+    }
+    
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+    .form-label {
+        font-size: 9px !important;
+    }
+    .form-control {
+        padding: 12px 14px !important;
+        font-size: 13px !important;
+    }
+    textarea.form-control {
+        height: 60px !important;
+    }
+    .form-actions {
+        flex-direction: column !important;
+    }
+    .btn-cancel, .btn-save {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Panels Grid */
+    .panels-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Order Active */
+    .order-active {
+        padding-left: 12px !important;
+    }
+    .order-header-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    .order-images {
+        margin-top: 8px !important;
+    }
+    .order-images img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .order-more {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    /* Progress Bar */
+    .progress-track {
+        margin-top: 20px !important;
+    }
+    .node-label {
+        font-size: 8px !important;
+    }
+    
+    /* Past Orders */
+    .past-order {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    .past-order-info h4 {
+        font-size: 12px !important;
+    }
+    .btn-white {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .account-container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .panel {
+        padding: 16px !important;
+    }
+    
+    .panel-title {
+        font-size: 16px !important;
+    }
+    
+    .progress-nodes {
+        gap: 8px !important;
+    }
+    
+    .node-dot {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    .node-label {
+        font-size: 7px !important;
+    }
+}

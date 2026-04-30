@@ -376,3 +376,156 @@
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    .account-container {
+        flex-direction: column !important;
+        padding: 24px 16px 60px !important;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 100% !important;
+    }
+    .sidebar-nav {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+    .sidebar-nav a {
+        padding: 10px 12px !important;
+        font-size: 12px !important;
+    }
+    .sidebar-divider {
+        display: none !important;
+    }
+    
+    /* Main Content */
+    .account-content {
+        width: 100% !important;
+    }
+    .page-header {
+        margin-bottom: 24px !important;
+    }
+    .page-header h1 {
+        font-size: 26px !important;
+    }
+    .page-header p {
+        max-width: 100% !important;
+    }
+    .section-label {
+        font-size: 10px !important;
+    }
+    
+    /* Shipment Card */
+    .shipment-card {
+        flex-direction: column !important;
+        margin-bottom: 24px !important;
+    }
+    .shipment-img {
+        width: 100% !important;
+        height: 200px !important;
+    }
+    .shipment-details {
+        padding: 20px !important;
+    }
+    .shipment-header {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    .product-title {
+        font-size: 16px !important;
+        margin-bottom: 24px !important;
+    }
+    
+    /* Progress Bar */
+    .progress-container {
+        margin-bottom: 20px !important;
+    }
+    .progress-steps {
+        gap: 4px !important;
+    }
+    .step-label {
+        font-size: 7px !important;
+    }
+    
+    /* Buttons */
+    .shipment-actions {
+        flex-direction: column !important;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    /* History Grid */
+    .history-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+    .history-card {
+        padding: 20px !important;
+    }
+    .history-card-img {
+        height: 180px !important;
+    }
+    .history-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+    .history-title {
+        font-size: 13px !important;
+    }
+    
+    /* Wide Card */
+    .wide-card {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    .wide-card-left {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .wide-card-info h4 {
+        font-size: 13px !important;
+    }
+    .btn-white {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    .account-container {
+        padding: 20px 14px 40px !important;
+    }
+    .page-header h1 {
+        font-size: 22px !important;
+    }
+    .shipment-img {
+        height: 150px !important;
+    }
+    .product-title {
+        font-size: 14px !important;
+    }
+    .progress-steps {
+        gap: 2px !important;
+    }
+    .step-dot {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    .step-label {
+        font-size: 6px !important;
+    }
+}

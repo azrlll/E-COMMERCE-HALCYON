@@ -137,3 +137,101 @@ main {
     line-height: 1.6;
     color: #555;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 0 16px !important;
+    }
+    
+    /* Story Header */
+    .story-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        margin: 32px auto 24px !important;
+    }
+    .story-content {
+        max-width: 100% !important;
+    }
+    .story-label {
+        font-size: 10px !important;
+        margin-bottom: 12px !important;
+    }
+    .story-content h1 {
+        font-size: 28px !important;
+        margin-bottom: 16px !important;
+    }
+    .story-content p {
+        font-size: 13px !important;
+    }
+    
+    /* Vision Grid */
+    .vision-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin-bottom: 40px !important;
+    }
+    .vision-img-large {
+        min-height: 300px !important;
+    }
+    .vision-text-box {
+        padding: 32px 24px !important;
+    }
+    .vision-text-box h2 {
+        font-size: 20px !important;
+    }
+    .vision-text-box p {
+        font-size: 12px !important;
+    }
+    .vision-img-small {
+        height: 200px !important;
+    }
+    
+    /* Commitment Section */
+    .commitment-section {
+        padding: 40px 20px !important;
+    }
+    .commitment-section h2 {
+        font-size: 22px !important;
+        margin-bottom: 32px !important;
+    }
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .commitment-card {
+        padding: 24px !important;
+    }
+    .card-icon {
+        margin-bottom: 16px !important;
+    }
+    .commitment-card h3 {
+        font-size: 15px !important;
+    }
+    .commitment-card p {
+        font-size: 11px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px !important;
+    }
+    
+    .story-content h1 {
+        font-size: 24px !important;
+    }
+    
+    .vision-img-large {
+        min-height: 200px !important;
+    }
+    
+    .vision-text-box {
+        padding: 24px 16px !important;
+    }
+    
+    .commitment-section h2 {
+        font-size: 20px !important;
+    }
+}

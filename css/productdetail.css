@@ -323,3 +323,182 @@
     font-size: 13px;
     color: #666;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    
+    /* Breadcrumbs */
+    .breadcrumbs {
+        font-size: 9px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Layout - Stack vertically */
+    .product-layout {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        margin-bottom: 40px !important;
+    }
+    
+    /* Images */
+    .product-gallery {
+        gap: 12px !important;
+    }
+    .main-image {
+        height: 300px !important;
+    }
+    .thumbnail-list {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+    }
+    
+    /* Details */
+    .badge-exclusive {
+        font-size: 8px !important;
+        padding: 3px 8px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .product-title {
+        font-size: 26px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .price-review-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .product-price {
+        font-size: 20px !important;
+    }
+    
+    .product-reviews {
+        font-size: 10px !important;
+    }
+    
+    .product-description {
+        font-size: 13px !important;
+        margin-bottom: 24px !important;
+    }
+    
+    /* Options */
+    .option-group {
+        margin-bottom: 20px !important;
+    }
+    .option-label {
+        font-size: 9px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Swatches */
+    .swatch-list {
+        gap: 10px !important;
+    }
+    .swatch-wrapper {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    .swatch {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* Upholstery */
+    .upholstery-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    .uph-btn {
+        font-size: 11px !important;
+        padding: 10px !important;
+    }
+    
+    /* Actions */
+    .product-actions {
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin-bottom: 24px !important;
+    }
+    .btn-add-cart {
+        padding: 14px !important;
+        font-size: 13px !important;
+    }
+    .btn-wishlist {
+        width: 100% !important;
+        height: 48px !important;
+    }
+    
+    /* Accordions */
+    .accordion-header {
+        padding: 16px 0 !important;
+        font-size: 12px !important;
+    }
+    .accordion-content {
+        font-size: 12px !important;
+        padding-bottom: 16px !important;
+    }
+    
+    /* Cross Sell */
+    .cross-sell {
+        margin-top: 40px !important;
+    }
+    .cross-sell h2 {
+        font-size: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    .cross-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .cross-img {
+        height: 180px !important;
+        margin-bottom: 12px !important;
+    }
+    .cross-tag {
+        font-size: 8px !important;
+    }
+    .cross-title {
+        font-size: 12px !important;
+    }
+    .cross-price {
+        font-size: 11px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .main-image {
+        height: 240px !important;
+    }
+    
+    .product-title {
+        font-size: 22px !important;
+    }
+    
+    .product-price {
+        font-size: 18px !important;
+    }
+    
+    .thumbnail-list {
+        gap: 8px !important;
+    }
+    
+    .cross-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    
+    .cross-img {
+        height: 140px !important;
+    }
+}

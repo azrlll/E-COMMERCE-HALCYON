@@ -298,3 +298,181 @@
 .btn-apply:hover {
     background: #333;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    
+    /* Header */
+    .cart-header {
+        margin-bottom: 24px !important;
+    }
+    .cart-header h1 {
+        font-size: 28px !important;
+        margin-bottom: 6px !important;
+    }
+    .cart-header p {
+        font-size: 10px !important;
+    }
+    
+    /* Layout - Stack vertically */
+    .cart-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    
+    /* Cart Items */
+    .cart-item {
+        padding: 16px !important;
+        gap: 16px !important;
+    }
+    .item-image {
+        width: 100px !important;
+        height: 100px !important;
+        flex-shrink: 0 !important;
+    }
+    .item-details {
+        min-width: 0 !important;
+    }
+    .item-tag {
+        font-size: 8px !important;
+        margin-bottom: 4px !important;
+    }
+    .item-title {
+        font-size: 14px !important;
+        margin-bottom: 2px !important;
+    }
+    .item-subtitle {
+        font-size: 11px !important;
+    }
+    .item-price {
+        font-size: 14px !important;
+    }
+    
+    /* Item Controls */
+    .item-controls {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    .qty-selector {
+        height: 28px !important;
+    }
+    .qty-btn {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 14px !important;
+    }
+    .qty-input {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 12px !important;
+    }
+    .btn-remove {
+        font-size: 11px !important;
+    }
+    .btn-remove svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    /* Summary Card */
+    .summary-card {
+        padding: 20px !important;
+    }
+    .summary-card h2 {
+        font-size: 18px !important;
+        margin-bottom: 16px !important;
+    }
+    .summary-row {
+        font-size: 12px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .summary-divider {
+        margin: 16px 0 !important;
+    }
+    
+    .total-row {
+        margin-bottom: 16px !important;
+    }
+    .total-label {
+        font-size: 14px !important;
+    }
+    .total-price {
+        font-size: 22px !important;
+    }
+    
+    .btn-checkout {
+        padding: 14px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Trust Badges */
+    .trust-badge {
+        margin-bottom: 12px !important;
+    }
+    .trust-badge p {
+        font-size: 11px !important;
+    }
+    .trust-badge svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    /* Promo */
+    .promo-section h3 {
+        font-size: 9px !important;
+        margin-bottom: 10px !important;
+    }
+    .promo-input {
+        padding: 10px 12px !important;
+        font-size: 12px !important;
+    }
+    .btn-apply {
+        padding: 0 16px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .cart-header h1 {
+        font-size: 24px !important;
+    }
+    
+    .cart-item {
+        flex-direction: column !important;
+        padding: 12px !important;
+    }
+    
+    .item-image {
+        width: 100% !important;
+        height: 140px !important;
+    }
+    
+    .item-title {
+        font-size: 13px !important;
+    }
+    
+    .item-controls {
+        width: 100% !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
+    
+    .summary-card {
+        padding: 16px !important;
+    }
+    
+    .total-price {
+        font-size: 20px !important;
+    }
+}

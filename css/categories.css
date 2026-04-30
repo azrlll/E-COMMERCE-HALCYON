@@ -213,3 +213,117 @@
     border-color: #0052a3;
     color: #0052a3;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    
+    /* Hero Section */
+    .hub-hero {
+        margin-bottom: 24px;
+    }
+    .hub-hero h1 {
+        font-size: 32px !important;
+        letter-spacing: -0.5px;
+    }
+    .hub-hero p {
+        max-width: 100%;
+    }
+    
+    /* Categories Grids - Stack vertically */
+    .grid-top {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin-bottom: 16px !important;
+    }
+    .grid-bottom {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px !important;
+    }
+    .grid-top .cat-img,
+    .grid-bottom .cat-img {
+        height: 200px !important;
+    }
+    .cat-info {
+        padding: 16px !important;
+    }
+    .cat-text h3 {
+        font-size: 16px !important;
+    }
+    .cat-text p {
+        font-size: 11px !important;
+    }
+    
+    /* New Arrivals */
+    .arrivals-wrapper {
+        padding: 40px 0 !important;
+        margin-top: 40px !important;
+    }
+    .arrivals-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
+    }
+    .arrivals-header h2 {
+        font-size: 20px !important;
+    }
+    .arrivals-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .product-img {
+        height: 160px !important;
+    }
+    .product-meta {
+        font-size: 8px !important;
+    }
+    .product-title {
+        font-size: 12px !important;
+    }
+    .product-rating {
+        font-size: 10px !important;
+    }
+    .product-price {
+        font-size: 12px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .hub-hero h1 {
+        font-size: 26px !important;
+    }
+    
+    .grid-bottom {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .grid-top .cat-img,
+    .grid-bottom .cat-img {
+        height: 180px !important;
+    }
+    
+    .arrivals-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .product-img {
+        height: 120px !important;
+    }
+    
+    .product-meta {
+        font-size: 7px !important;
+    }
+    .product-title {
+        font-size: 11px !important;
+    }
+}

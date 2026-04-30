@@ -309,3 +309,186 @@ select.form-control {
     width: 12px;
     height: 12px;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 24px 16px 60px !important;
+    }
+    
+    /* Header */
+    .checkout-header {
+        margin-bottom: 24px !important;
+    }
+    .checkout-header h1 {
+        font-size: 28px !important;
+        margin-bottom: 6px !important;
+    }
+    .checkout-header p {
+        font-size: 13px !important;
+    }
+    
+    /* Layout - Stack vertically */
+    .checkout-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+    }
+    
+    /* Form Sections */
+    .form-section {
+        margin-bottom: 24px !important;
+    }
+    .section-title {
+        font-size: 18px !important;
+        margin-bottom: 16px !important;
+    }
+    .section-title svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr !important;
+        margin-bottom: 16px !important;
+    }
+    .form-group {
+        margin-bottom: 16px !important;
+    }
+    .form-label {
+        font-size: 9px !important;
+        margin-bottom: 6px !important;
+    }
+    .form-control {
+        padding: 12px 14px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Payment Methods */
+    .payment-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .payment-card {
+        padding: 16px !important;
+    }
+    .payment-icon {
+        margin-bottom: 10px !important;
+    }
+    .payment-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .payment-name {
+        font-size: 13px !important;
+    }
+    .payment-desc {
+        font-size: 10px !important;
+    }
+    .radio-indicator {
+        top: 16px !important;
+        right: 16px !important;
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    /* Summary Card */
+    .summary-card {
+        position: relative !important;
+        top: 0 !important;
+        padding: 24px !important;
+    }
+    .summary-card h2 {
+        font-size: 18px !important;
+        margin-bottom: 16px !important;
+    }
+    
+    /* Order Items */
+    .order-items {
+        margin-bottom: 24px !important;
+    }
+    .order-item {
+        gap: 12px !important;
+    }
+    .order-img {
+        width: 56px !important;
+        height: 56px !important;
+    }
+    .order-name {
+        font-size: 13px !important;
+    }
+    .order-meta {
+        font-size: 9px !important;
+    }
+    .order-qty {
+        font-size: 11px !important;
+    }
+    .order-price {
+        font-size: 13px !important;
+    }
+    
+    /* Totals */
+    .totals-section {
+        margin-bottom: 16px !important;
+        padding-top: 16px !important;
+    }
+    .total-row {
+        font-size: 12px !important;
+    }
+    .final-total {
+        margin-top: 8px !important;
+        padding-top: 16px !important;
+    }
+    .final-label {
+        font-size: 14px !important;
+    }
+    .final-price {
+        font-size: 22px !important;
+    }
+    
+    /* Button */
+    .btn-complete {
+        padding: 14px !important;
+        font-size: 13px !important;
+    }
+    .secure-badge {
+        font-size: 10px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 14px 40px !important;
+    }
+    
+    .checkout-header h1 {
+        font-size: 26px !important;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .payment-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .summary-card {
+        padding: 20px !important;
+    }
+    
+    .order-item {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+    
+    .order-img {
+        width: 100% !important;
+        height: 80px !important;
+    }
+    
+    .btn-complete {
+        padding: 14px !important;
+    }
+}
