@@ -305,3 +305,99 @@ button {
     font-weight: 500;
     color: #444;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Header */
+    #global-header {
+        padding: 0 16px;
+        height: 64px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .header-left {
+        gap: 20px;
+    }
+    
+    .header-logo {
+        font-size: 18px;
+    }
+    
+    .header-nav ul {
+        gap: 16px;
+        font-size: 13px;
+    }
+    
+    .header-right {
+        gap: 12px;
+    }
+    
+    .header-search {
+        display: none;
+    }
+    
+    .header-icons {
+        gap: 8px;
+    }
+    
+    .icon-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .icon-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+    
+    /* Account Dropdown - show differently on mobile */
+    .account-dropdown {
+        position: fixed;
+        top: 64px;
+        right: 8px;
+        left: 8px;
+        width: auto;
+        max-width: none;
+    }
+    
+    /* Footer */
+    #global-footer {
+        padding: 40px 20px 16px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .footer-col p {
+        max-width: 100%;
+    }
+    
+    .payment-methods {
+        width: 180px;
+    }
+    
+    .footer-links {
+        gap: 20px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        font-size: 16px;
+    }
+    
+    .header-nav {
+        display: none;
+    }
+}

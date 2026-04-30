@@ -261,3 +261,141 @@ h2.section-title {
     font-size: 10px;
     color: #6b7280;
 }
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        padding: 0 16px;
+    }
+    
+    /* Brand Hero */
+    .brand-hero {
+        margin: 30px 0;
+    }
+    .brand-hero img {
+        width: 100%;
+    }
+    
+    /* Section Headers */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    h2.section-title {
+        font-size: 24px;
+    }
+    .section-subtitle {
+        font-size: 12px;
+    }
+    
+    /* Shop by Room - Stack vertically */
+    .shop-by-room {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+        gap: 12px;
+    }
+    .room-card {
+        min-height: 180px;
+        padding: 20px;
+    }
+    .room-card.large,
+    .room-card.tall,
+    .room-card.small-1,
+    .room-card.small-2 {
+        grid-column: 1;
+        grid-row: auto;
+    }
+    .room-card-content {
+        z-index: 2;
+    }
+    .room-label {
+        font-size: 9px;
+    }
+    .room-title {
+        font-size: 18px;
+    }
+    .btn-white {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+    .room-link {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+    
+    /* Product Grid */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+    .product-card img {
+        height: 150px;
+        margin-bottom: 8px;
+    }
+    .product-info {
+        font-size: 11px;
+    }
+    .product-price {
+        font-size: 11px;
+    }
+    .product-rating {
+        font-size: 10px;
+    }
+    
+    /* Promo Section */
+    .promo-section {
+        grid-template-columns: 1fr;
+        height: auto;
+        margin-bottom: 40px;
+    }
+    .promo-content {
+        padding: 30px 20px;
+        min-height: 280px;
+    }
+    .promo-content h3 {
+        font-size: 26px;
+    }
+    .promo-content p {
+        font-size: 13px;
+    }
+    .promo-image {
+        height: 200px;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+        padding: 30px 0;
+        margin-bottom: 40px;
+    }
+    .testimonials-title {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .testimonial-card {
+        padding: 20px;
+    }
+    .testimonial-text {
+        font-size: 12px;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-card img {
+        height: 200px;
+    }
+    .promo-content h3 {
+        font-size: 22px;
+    }
+}
