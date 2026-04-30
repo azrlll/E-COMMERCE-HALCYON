@@ -66,9 +66,7 @@ function showSection(section) {
         }
     } else if (section === 'orders') {
         window.location.href = 'trackorder.html';
-    } else if (section === 'wishlist') {
-        alert('Wishlist feature coming soon!');
-    } else if (section === 'settings') {
+} else if (section === 'settings') {
         alert('Settings feature coming soon!');
     }
 }
@@ -88,6 +86,14 @@ function performSearch(query) {
     }
 }
 
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const navUl = document.querySelector('.header-nav ul');
+    if (navUl) {
+        navUl.classList.toggle('mobile-open');
+    }
+}
+
 // Update cart badge
 function updateCartBadge() {
     try {
@@ -104,10 +110,13 @@ function updateCartBadge() {
 // Inject header and footer
 document.addEventListener("DOMContentLoaded", function() {
     // Header HTML
-    var headerHTML = 
+var headerHTML = 
         '<header id="global-header">' +
             '<div class="header-left">' +
                 '<div class="header-logo"><a href="index.html">HALCYON HOME</a></div>' +
+                '<button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">' +
+                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>' +
+                '</button>' +
                 '<nav class="header-nav">' +
                     '<ul>' +
                         '<li><a href="index.html">Home</a></li>' +
@@ -258,3 +267,4 @@ window.showSection = showSection;
 window.logout = logout;
 window.performSearch = performSearch;
 window.updateCartBadge = updateCartBadge;
+window.toggleMobileMenu = toggleMobileMenu;

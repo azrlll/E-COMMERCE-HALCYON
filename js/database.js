@@ -1,5 +1,3 @@
-const products = []
-
 // Cart, User, Order Management Functions
 const CART_KEY = 'halcyon_cart';
 const USER_KEY = 'halcyon_user';

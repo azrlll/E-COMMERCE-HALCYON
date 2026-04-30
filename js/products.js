@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const grid = document.getElementById("product-grid");
     if (!grid) return; // Exit if not on productlist.html
+    
+    // Check if products array exists, if not define it
+    if (typeof products === 'undefined') {
+        console.log('Products not loaded from database.js');
+        return;
+    }
 
     // 1. Get Category from URL (e.g., ?category=sofas)
     const urlParams = new URLSearchParams(window.location.search);

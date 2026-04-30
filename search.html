@@ -13,120 +13,153 @@
     <main class="search-page">
         <div class="container">
             
-            <div class="search-header-area">
-                <div class="search-title-group">
-                    <h4>SEARCH RESULTS FOR:</h4>
-                    <h1>"Velvet Seating"</h1>
-                    <p>12 pieces curated for your inquiry</p>
-                </div>
-                <div class="search-controls">
-                    <select class="control-select">
-                        <option>Relevance</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                    </select>
-                    <button class="control-btn">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
-                        Filters
-                    </button>
-                </div>
-            </div>
+            <div class="search-layout">
+                <!-- Sidebar Filters -->
+                <aside class="search-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-heading">MATERIAL</h3>
+                        <ul class="filter-list">
+                            <li>
+                                <label class="checkbox-label" data-filter="material" data-value="walnut">
+                                    <input type="checkbox">
+                                    <span class="checkbox-square"></span>
+                                    Solid Walnut
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label checked" data-filter="material" data-value="boucle">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Bouclé Fabric
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="material" data-value="marble">
+                                    <input type="checkbox">
+                                    <span class="checkbox-square"></span>
+                                    Polished Marble
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="material" data-value="steel">
+                                    <input type="checkbox">
+                                    <span class="checkbox-square"></span>
+                                    Brushed Steel
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
 
-            <div class="search-grid">
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80" alt="Azure Lounge Chair">
+                    <div class="filter-section">
+                        <h3 class="filter-heading">PRICE RANGE</h3>
+                        <div class="price-slider-wrapper">
+                            <input type="range" min="500" max="5000" value="3500" class="price-slider" id="priceSlider">
+                            <div class="price-slider-track">
+                                <div class="price-slider-fill" id="priceFill"></div>
+                            </div>
+                            <div class="price-slider-thumb" id="priceThumb"></div>
+                        </div>
+                        <div class="price-labels">
+                            <span>$500</span>
+                            <span id="priceValue">$3,500+</span>
+                        </div>
                     </div>
-                    <div class="product-row">
-                        <span class="product-name">Azure Lounge Chair</span>
-                        <span class="product-price">$1,240</span>
-                    </div>
-                    <span class="product-subtitle">Midnight Blue Velvet</span>
-                    <span class="tag-stock">IN STOCK</span>
-                </div>
 
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80" alt="Elysian Sofa">
+                    <div class="filter-section">
+                        <h3 class="filter-heading">COLOR PALETTE</h3>
+                        <div class="color-swatches">
+                            <button type="button" class="color-swatch active" data-color="grey" style="background: #e8e8e8;" title="Off-white/Light Grey"></button>
+                            <button type="button" class="color-swatch" data-color="black" style="background: #1a1a1a;" title="Black"></button>
+                            <button type="button" class="color-swatch" data-color="green" style="background: #1a3c34;" title="Dark Forest Green"></button>
+                            <button type="button" class="color-swatch" data-color="terracotta" style="background: #8b4d3b;" title="Terracotta Brown"></button>
+                            <button type="button" class="color-swatch" data-color="blue" style="background: #8fa8d4;" title="Light Periwinkle Blue"></button>
+                        </div>
                     </div>
-                    <div class="product-row">
-                        <span class="product-name">Elysian Sofa</span>
-                        <span class="product-price">$3,800</span>
+                    
+                    <!-- Category Filter -->
+                    <div class="filter-section">
+                        <h3 class="filter-heading">CATEGORY</h3>
+                        <ul class="filter-list">
+                            <li>
+                                <label class="checkbox-label" data-filter="category" data-value="chairs">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Chairs
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="category" data-value="tables">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Tables
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="category" data-value="decoration">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Decoration
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="category" data-value="lighting">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Lighting
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label" data-filter="category" data-value="sofas">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Sofas
+                                </label>
+                            </li>
+                        </ul>
                     </div>
-                    <span class="product-subtitle">Forest Emerald Textile</span>
-                </div>
+                </aside>
 
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <span class="tag-limited">LIMITED EDITION</span>
-                        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=400&q=80" alt="Rosé Ottoman">
+                <!-- Main Content -->
+                <div class="search-main-content">
+                    <div class="search-header-area">
+                        <div class="search-title-group">
+                            <h4>SEARCH RESULTS FOR:</h4>
+                            <h1>"Velvet Seating"</h1>
+                            <p id="resultsCount">25 pieces curated for your inquiry</p>
+                        </div>
+                        <div class="search-controls">
+<select class="control-select" id="sortSelect">
+                                <option value="relevance">Relevance</option>
+                                <option value="newest">Newest Arrivals</option>
+                                <option value="best-seller">Best Sellers</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name: A-Z</option>
+                            </select>
+                            <button class="control-btn" id="filterBtn">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                                Sort by: Featured
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-row">
-                        <span class="product-name">Rosé Ottoman</span>
-                        <span class="product-price">$650</span>
-                    </div>
-                    <span class="product-subtitle">Dusky Rose Velvet</span>
-                </div>
 
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&w=400&q=80" alt="Amber Swivel Shell">
+                    <div class="search-grid" id="productGrid">
+                        <!-- Products will be rendered by JavaScript -->
                     </div>
-                    <div class="product-row">
-                        <span class="product-name">Amber Swivel Shell</span>
-                        <span class="product-price">$890</span>
-                    </div>
-                    <span class="product-subtitle">Burnt Sienna Velvet</span>
-                </div>
 
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1519961655809-34fa156820ff?auto=format&fit=crop&w=400&q=80" alt="Shadow Accent Chair">
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination">
+                        <button class="pagination-btn" id="prevPage" disabled>&laquo; Previous</button>
+                        <div class="pagination-numbers" id="paginationNumbers">
+                            <!-- Page numbers will be rendered by JavaScript -->
+                        </div>
+                        <button class="pagination-btn" id="nextPage">Next &raquo;</button>
                     </div>
-                    <div class="product-row">
-                        <span class="product-name">Shadow Accent Chair</span>
-                        <span class="product-price">$1,100</span>
+                    
+                    <div class="load-more-section">
+                        <span class="load-status" id="loadStatus">Showing 1-8 of 25 items</span>
                     </div>
-                    <span class="product-subtitle">Charcoal Heavy Velvet</span>
                 </div>
-
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1506439015525-4c6e949ff1b3?auto=format&fit=crop&w=400&q=80" alt="Olive Dining Armchair">
-                    </div>
-                    <div class="product-row">
-                        <span class="product-name">Olive Dining Armchair</span>
-                        <span class="product-price">$420</span>
-                    </div>
-                    <span class="product-subtitle">Olive Moss Velvet</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80" alt="Cloud Pouf">
-                    </div>
-                    <div class="product-row">
-                        <span class="product-name">Cloud Pouf</span>
-                        <span class="product-price">$210</span>
-                    </div>
-                    <span class="product-subtitle">Cream Silk Velvet</span>
-                </div>
-
-                <div class="product-card">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=400&q=80" alt="Ruby Bedside Bench">
-                    </div>
-                    <div class="product-row">
-                        <span class="product-name">Ruby Bedside Bench</span>
-                        <span class="product-price">$550</span>
-                    </div>
-                    <span class="product-subtitle">Crimson Red Velvet</span>
-                </div>
-            </div>
-
-            <div class="load-more-section">
-                <button class="btn-load-more">Load More Discoveries</button>
-                <span class="load-status">Viewing 8 of 12 items</span>
             </div>
 
         </div>
@@ -151,5 +184,6 @@
     </main>
 
     <script src="js/global.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
