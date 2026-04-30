@@ -114,7 +114,7 @@ var headerHTML =
         '<header id="global-header">' +
             '<div class="header-left">' +
                 '<div class="header-logo"><a href="index.html">HALCYON HOME</a></div>' +
-                '<button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">' +
+                '<button class="mobile-menu-btn" aria-label="Menu">' +
                     '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>' +
                 '</button>' +
                 '<nav class="header-nav">' +
@@ -245,7 +245,7 @@ var headerHTML =
         });
     }
     
-    // Make dropdown items clickable
+// Make dropdown items clickable
     var dropdownItems = document.querySelectorAll('.dropdown-item');
     if (dropdownItems) {
         dropdownItems.forEach(function(item) {
@@ -256,6 +256,14 @@ var headerHTML =
                     window.location.href = href;
                 }
             });
+        });
+    }
+    
+    // Mobile menu button click handler
+    var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            toggleMobileMenu();
         });
     }
 });
