@@ -425,8 +425,21 @@ h2.section-title {
         grid-template-columns: 1fr 1fr !important;
         gap: 12px !important;
     }
+    .product-card {
+        display: flex !important;
+        flex-direction: column !important;
+    }
     .product-card img {
-        min-height: 140px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 120px !important;
+        max-width: 100% !important;
+        object-fit: cover !important;
+        aspect-ratio: 1 / 1 !important;
+    }
+    .product-info {
+        flex-direction: column !important;
+        gap: 4px !important;
     }
     .promo-content h3 {
         font-size: 20px !important;
