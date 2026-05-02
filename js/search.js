@@ -1,65 +1,64 @@
 // Search Page Functionality
 
-// Product Data - 25 items (5 chairs, 5 tables, 5 decoration, 5 lighting, 5 sofas)
-const products = [
-    // Chairs (5 items)
-    { id: 1, name: "Azure Lounge Chair", price: 1240, category: "chairs", material: "boucle", color: "blue", image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80", subtitle: "Midnight Blue Velvet", stock: "IN STOCK" },
-    { id: 2, name: "Amber Swivel Shell", price: 890, category: "chairs", material: "boucle", color: "terracotta", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&w=400&q=80", subtitle: "Burnt Sienna Velvet" },
-    { id: 3, name: "Shadow Accent Chair", price: 1100, category: "chairs", material: "boucle", color: "black", image: "https://images.unsplash.com/photo-1519961655809-34fa156820ff?auto=format&fit=crop&w=400&q=80", subtitle: "Charcoal Heavy Velvet" },
-    { id: 4, name: "Olive Dining Armchair", price: 420, category: "chairs", material: "boucle", color: "green", image: "https://images.unsplash.com/photo-1506439015525-4c6e949ff1b3?auto=format&fit=crop&w=400&q=80", subtitle: "Olive Moss Velvet" },
-    { id: 5, name: "Elysian Lounge Chair", price: 1450, category: "chairs", material: "walnut", color: "grey", image: "https://images.unsplash.com/photo-1586025922924-c8e2f8e4b3a5?auto=format&fit=crop&w=400&q=80", subtitle: "Cream Bouclé" },
-    
-    // Tables (5 items)
-    { id: 6, name: "Cove Oak Side Table", price: 550, category: "tables", material: "walnut", color: "grey", image: "https://images.unsplash.com/photo-1532372320572-cda0bc11ebe5?auto=format&fit=crop&w=400&q=80", subtitle: "Natural Oak Veneer" },
-    { id: 7, name: "Borgeby Coffee Table", price: 780, category: "tables", material: "walnut", color: "green", image: "https://images.unsplash.com/photo-1533090481720-856a6e09d39b?auto=format&fit=crop&w=400&q=80", subtitle: "Birch Veneer" },
-    { id: 8, name: "Guttane Coffee Table", price: 920, category: "tables", material: "walnut", color: "black", image: "https://images.unsplash.com/photo-1499933374294-0f0747a8fb12?auto=format&fit=crop&w=400&q=80", subtitle: "Oak Finish" },
-    { id: 9, name: "Marble Sculptural Table", price: 2100, category: "tables", material: "marble", color: "grey", image: "https://images.unsplash.com/photo-1611269154421-4e27233f1c25?auto=format&fit=crop&w=400&q=80", subtitle: "Polished White Marble" },
-    { id: 10, name: "Steel几何 Side Table", price: 380, category: "tables", material: "steel", color: "black", image: "https://images.unsplash.com/photo-1499933381432-6eml6f5f8c26?auto=format&fit=crop&w=400&q=80", subtitle: "Brushed Steel" },
-    
-    // Decoration (5 items)
-    { id: 11, name: "Gradvis Vase", price: 180, category: "decoration", material: "steel", color: "terracotta", image: "https://images.unsplash.com/photo-1612196808214-b2f05646b91d?auto=format&fit=crop&w=400&q=80", subtitle: "Dark Ceramic" },
-    { id: 12, name: "Cacstus Base Decoration", price: 220, category: "decoration", material: "marble", color: "grey", image: "https://images.unsplash.com/photo-1581539250439-9666b92d4b91?auto=format&fit=crop&w=400&q=80", subtitle: "Natural Stone" },
-    { id: 13, name: "Strata Hand-Woven Rug", price: 890, category: "decoration", material: "boucle", color: "green", image: "https://images.unsplash.com/photo-1575411283557-70f1d4a975ea?auto=format&fit=crop&w=400&q=80", subtitle: "Maca Wool" },
-    { id: 14, name: "Decorative Cushion Set", price: 150, category: "decoration", material: "boucle", color: "blue", image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80", subtitle: "Blue Silk Cloth" },
-    { id: 15, name: "Lindbyn Mirror", price: 340, category: "decoration", material: "steel", color: "black", image: "https://images.unsplash.com/photo-1618220174428-1a5f79738cdc?auto=format&fit=crop&w=400&q=80", subtitle: "Black Metal Frame" },
-    
-    // Lighting (5 items)
-    { id: 16, name: "ARÖD Floor Lamp", price: 450, category: "lighting", material: "steel", color: "black", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80", subtitle: "Matte Black" },
-    { id: 17, name: "Aura Sculptural Table Lamp", price: 280, category: "lighting", material: "marble", color: "grey", image: "https://images.unsplash.com/photo-1513506003901-1e6a22935782?auto=format&fit=crop&w=400&q=80", subtitle: "White Marble Base" },
-    { id: 18, name: "Fjord Floor Lamp", price: 520, category: "lighting", material: "steel", color: "green", image: "https://images.unsplash.com/photo-1540932239986-301280d3d87a?auto=format&fit=crop&w=400&q=80", subtitle: "Brass Plated" },
-    { id: 19, name: "Giulietta Table Lamp", price: 380, category: "lighting", material: "steel", color: "blue", image: "https://images.unsplash.com/photo-1524484488911-d9157fda962d?auto=format&fit=crop&w=400&q=80", subtitle: "Battery Operated" },
-    { id: 20, name: "Stockholm Floor Lamp", price: 620, category: "lighting", material: "steel", color: "grey", image: "https://images.unsplash.com/photo-1513136123985-53d59533d09d?auto=format&fit=crop&w=400&q=80", subtitle: "White Textile Shade" },
-    
-    // Sofas (5 items)
-    { id: 21, name: "Elysian Sofa", price: 3800, category: "sofas", material: "boucle", color: "green", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80", subtitle: "Forest Emerald Textile" },
-    { id: 22, name: "Rosé Ottoman", price: 650, category: "sofas", material: "boucle", color: "blue", image: "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=400&q=80", subtitle: "Dusky Rose Velvet", tag: "LIMITED EDITION" },
-    { id: 23, name: "Cloud Pouf", price: 210, category: "sofas", material: "boucle", color: "grey", image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=400&q=80", subtitle: "Cream Silk Velvet" },
-    { id: 24, name: "Ruby Bedside Bench", price: 550, category: "sofas", material: "boucle", color: "terracotta", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=400&q=80", subtitle: "Crimson Red Velvet" },
-    { id: 25, name: "Smedstorp Loveseat", price: 1650, category: "sofas", material: "boucle", color: "terracotta", image: "https://images.unsplash.com/photo-1550254478-ead5cd95f42f3?auto=format&fit=crop&w=400&q=80", subtitle: "Red Brown Black" }
-];
+// Products are loaded from database.js (which has 40 products)
+// We create a search-specific format that properly maps database fields
 
 // State
 let currentPage = 1;
 const itemsPerPage = 8;
-let filteredProducts = [...products];
+let filteredProducts = [];
 let activeFilters = {
     materials: [],
-    categories: ["chairs", "tables", "decoration", "lighting", "sofas"],
+    categories: ["sofas", "tables", "lighting", "decor", "office-chairs", "bedroom", "storage", "outdoor", "kitchen"],
     colors: [],
-    maxPrice: 5000
+    maxPrice: 250000
 };
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    // Use products from database.js (already loaded via products.js)
+    if (typeof products !== 'undefined') {
+        filteredProducts = products.map(p => ({
+            id: p.id,
+            name: p.name,
+            price: p.price,
+            category: p.category,
+            material: p.material ? p.material.toLowerCase().replace(/[\s-]+/g, '-').replace(/é/g, 'e') : 'boucle',
+            color: getProductColor(p.category, p.material),
+            img: p.img,
+            subtitle: p.material || 'Premium Material',
+            stock: p.badge ? "IN STOCK" : "",
+            tag: p.badge || "",
+            badgeClass: p.badgeClass || ""
+        }));
+    }
+    
     renderProducts();
     setupFilters();
     setupPagination();
     setupSort();
 });
 
+// Helper function to determine product color based on material/category
+function getProductColor(category, material) {
+    if (!material) return 'grey';
+    const m = material.toLowerCase();
+    if (m.includes('velvet') || m.includes('blue')) return 'blue';
+    if (m.includes('green') || m.includes('forest')) return 'green';
+    if (m.includes('black') || m.includes('charcoal')) return 'black';
+    if (m.includes('terracotta') || m.includes('red') || m.includes('rose')) return 'terracotta';
+    if (m.includes('white') || m.includes('cream') || m.includes('oak')) return 'grey';
+    return 'grey';
+}
+
 // Render Products
 function renderProducts() {
     const grid = document.getElementById('productGrid');
+    if (!grid || filteredProducts.length === 0) {
+        grid.innerHTML = '<p class="no-products">No products found. Try adjusting your filters.</p>';
+        return;
+    }
+    
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const pageProducts = filteredProducts.slice(start, end);
@@ -68,11 +67,14 @@ function renderProducts() {
         <div class="product-card" data-id="${product.id}" onclick="viewProduct(${product.id})">
             <div class="img-wrapper">
                 ${product.tag ? `<span class="tag-limited">${product.tag}</span>` : ''}
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${product.img}" alt="${product.name}" onerror="this.src='images/homelogo.png'">
+<button class="btn-add-cart-mini" onclick="event.stopPropagation(); addToCartFromSearch(${product.id}, event)" title="Add to Cart">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </button>
             </div>
             <div class="product-row">
                 <span class="product-name">${product.name}</span>
-                <span class="product-price">$${product.price.toLocaleString()}</span>
+                <span class="product-price">₱${product.price.toLocaleString()}</span>
             </div>
             <span class="product-subtitle">${product.subtitle}</span>
             ${product.stock ? `<span class="tag-stock">${product.stock}</span>` : ''}
@@ -82,39 +84,92 @@ function renderProducts() {
     updateLoadStatus();
 }
 
+// Add to cart from search page - works with database.js functions
+function addToCartFromSearch(productId, event) {
+    // Get product from database.js products array
+    const product = getProductById(productId);
+    if (product) {
+        // Use database.js addToCart function
+        addToCart(productId, 1);
+        showCartNotification(product.name, event);
+    } else {
+        console.error('Product not found:', productId);
+    }
+}
+
 // Update Load Status
 function updateLoadStatus() {
     const total = filteredProducts.length;
     const start = (currentPage - 1) * itemsPerPage + 1;
     const end = Math.min(currentPage * itemsPerPage, total);
-    document.getElementById('loadStatus').textContent = `Showing ${start}-${end} of ${total} items`;
-    document.getElementById('resultsCount').textContent = `${total} pieces curated for your inquiry`;
+    const statusEl = document.getElementById('loadStatus');
+    const countEl = document.getElementById('resultsCount');
+    if (statusEl) statusEl.textContent = `Showing ${start}-${end} of ${total} items`;
+    if (countEl) countEl.textContent = `${total} pieces curated for your inquiry`;
 }
 
 // Setup Filters
 function setupFilters() {
-    // Checkbox Filters
-    document.querySelectorAll('.checkbox-label').forEach(label => {
+    // Material Checkbox Filters
+    document.querySelectorAll('.checkbox-label[data-filter="material"]').forEach(label => {
         label.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const checkbox = this.querySelector('input[type="checkbox"]');
             checkbox.checked = !checkbox.checked;
             this.classList.toggle('checked', checkbox.checked);
             
-            const filterType = this.dataset.filter;
             const filterValue = this.dataset.value;
             
             if (checkbox.checked) {
-                if (filterType === 'material') {
+                if (!activeFilters.materials.includes(filterValue)) {
                     activeFilters.materials.push(filterValue);
-                } else if (filterType === 'category') {
+                }
+            } else {
+                activeFilters.materials = activeFilters.materials.filter(m => m !== filterValue);
+            }
+            
+            applyFilters();
+        });
+    });
+    
+    // Category Checkbox Filters
+    document.querySelectorAll('.checkbox-label[data-filter="category"]').forEach(label => {
+        label.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const checkbox = this.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            this.classList.toggle('checked', checkbox.checked);
+            
+            const filterValue = this.dataset.value;
+            
+            if (checkbox.checked) {
+                if (!activeFilters.categories.includes(filterValue)) {
                     activeFilters.categories.push(filterValue);
                 }
             } else {
-                if (filterType === 'material') {
-                    activeFilters.materials = activeFilters.materials.filter(m => m !== filterValue);
-                } else if (filterType === 'category') {
-                    activeFilters.categories = activeFilters.categories.filter(c => c !== filterValue);
+                activeFilters.categories = activeFilters.categories.filter(c => c !== filterValue);
+            }
+            
+            applyFilters();
+        });
+    });
+    
+    // Color Swatches - Fixed toggle logic
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', function(e) {
+            e.preventDefault();
+            const color = this.dataset.color;
+            
+            // Toggle: if already active, deactivate; otherwise activate
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                activeFilters.colors = activeFilters.colors.filter(c => c !== color);
+            } else {
+                this.classList.add('active');
+                if (!activeFilters.colors.includes(color)) {
+                    activeFilters.colors.push(color);
                 }
             }
             
@@ -122,30 +177,34 @@ function setupFilters() {
         });
     });
     
-    // Color Swatches
-    document.querySelectorAll('.color-swatch').forEach(swatch => {
-        swatch.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const color = this.dataset.color;
-            
-            if (this.classList.contains('active')) {
-                activeFilters.colors.push(color);
-            } else {
-                activeFilters.colors = activeFilters.colors.filter(c => c !== color);
-            }
-            
-            applyFilters();
-        });
-    });
-    
-    // Price Slider
+// Price Slider - Fixed for actual PHP prices
     const priceSlider = document.getElementById('priceSlider');
-    if (priceSlider) {
+    const priceFill = document.getElementById('priceFill');
+    const priceValue = document.getElementById('priceValue');
+    
+    if (priceSlider && priceFill && priceValue) {
+        const min = 500;
+        const max = 5000;
+        
+        const updatePriceDisplay = (sliderValue) => {
+            // Convert slider (500-5000) to PHP price range
+            // Simple mapping: slider * 50 = PHP
+            const phpPrice = sliderValue * 50;
+            
+            const percent = ((sliderValue - min) / (max - min)) * 100;
+            priceFill.style.width = percent + '%';
+            priceValue.textContent = '₱' + phpPrice.toLocaleString() + '+';
+            
+            return phpPrice;
+        };
+        
+        // Set initial display
+        const initValue = parseInt(priceSlider.value);
+        activeFilters.maxPrice = updatePriceDisplay(initValue);
+        
         priceSlider.addEventListener('input', function() {
-            activeFilters.maxPrice = parseInt(this.value);
-            document.getElementById('priceValue').textContent = '$' + this.value.toLocaleString() + '+';
-            document.getElementById('priceFill').style.width = ((this.value - 500) / 45) + '%';
-            document.getElementById('priceThumb').style.left = ((this.value - 500) / 45) + '%';
+            const value = parseInt(this.value);
+            activeFilters.maxPrice = updatePriceDisplay(value);
             applyFilters();
         });
     }
@@ -153,8 +212,22 @@ function setupFilters() {
 
 // Apply Filters
 function applyFilters() {
-    filteredProducts = products.filter(product => {
-        const materialMatch = activeFilters.materials.length === 0 || activeFilters.materials.includes(product.material);
+    if (!products) return;
+    
+    filteredProducts = products.map(p => ({
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        category: p.category,
+        material: p.material ? p.material.toLowerCase().replace(/[\s-]+/g, '-').replace(/é/g, 'e') : 'boucle',
+        color: getProductColor(p.category, p.material),
+        img: p.img,
+        subtitle: p.material || 'Premium Material',
+        stock: p.badge ? "IN STOCK" : "",
+        tag: p.badge || "",
+        badgeClass: p.badgeClass || ""
+    })).filter(product => {
+        const materialMatch = activeFilters.materials.length === 0 || activeFilters.materials.some(m => product.material && product.material.includes(m));
         const categoryMatch = activeFilters.categories.length === 0 || activeFilters.categories.includes(product.category);
         const colorMatch = activeFilters.colors.length === 0 || activeFilters.colors.includes(product.color);
         const priceMatch = product.price <= activeFilters.maxPrice;
@@ -171,22 +244,29 @@ function applyFilters() {
 function setupPagination() {
     renderPagination();
     
-    document.getElementById('prevPage').addEventListener('click', function() {
-        if (currentPage > 1) {
-            currentPage--;
-            renderProducts();
-            renderPagination();
-        }
-    });
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
     
-    document.getElementById('nextPage').addEventListener('click', function() {
-        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderProducts();
-            renderPagination();
-        }
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderProducts();
+                renderPagination();
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderProducts();
+                renderPagination();
+            }
+        });
+    }
 }
 
 // Render Pagination
@@ -194,19 +274,32 @@ function renderPagination() {
     const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const numbersContainer = document.getElementById('paginationNumbers');
     
+    if (!numbersContainer) return;
+    
     let numbersHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
-        if (totalPages <= 5 || i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+    const maxVisible = 5;
+    
+    if (totalPages <= maxVisible) {
+        for (let i = 1; i <= totalPages; i++) {
             numbersHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-        } else if (i === currentPage - 2 || i === currentPage + 2) {
-            numbersHTML += `<span class="pagination-ellipsis">...</span>`;
+        }
+    } else {
+        // Show first, last, and neighbors
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                numbersHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            } else if (i === currentPage - 2 || i === currentPage + 2) {
+                numbersHTML += `<span class="pagination-ellipsis">...</span>`;
+            }
         }
     }
     
     numbersContainer.innerHTML = numbersHTML;
     
-    document.getElementById('prevPage').disabled = currentPage === 1;
-    document.getElementById('nextPage').disabled = currentPage === totalPages;
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+    if (prevBtn) prevBtn.disabled = currentPage === 1;
+    if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalPages === 0;
 }
 
 // Go to Page
@@ -218,7 +311,10 @@ function goToPage(page) {
 
 // Setup Sort
 function setupSort() {
-    document.getElementById('sortSelect').addEventListener('change', function() {
+    const sortSelect = document.getElementById('sortSelect');
+    if (!sortSelect) return;
+    
+    sortSelect.addEventListener('change', function() {
         const sortValue = this.value;
         
         switch(sortValue) {
@@ -232,12 +328,12 @@ function setupSort() {
                 filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
                 break;
             case 'newest':
-                filteredProducts.sort((a, b) => b.id - a.id);
+                filteredProducts.sort((a, b) => (b.badge === 'NEW ARRIVAL' ? 1 : 0) - (a.badge === 'NEW ARRIVAL' ? 1 : 0));
                 break;
             case 'best-seller':
-                filteredProducts.sort((a, b) => (b.sales || 0) - (a.sales || 0));
+                filteredProducts.sort((a, b) => (b.badge === 'BEST SELLER' ? 1 : 0) - (a.badge === 'BEST SELLER' ? 1 : 0));
                 break;
-default:
+            default:
                 filteredProducts.sort((a, b) => a.id - b.id);
         }
         
@@ -247,7 +343,12 @@ default:
     });
 }
 
-// View Product
+// View Product - Navigate to product detail
 function viewProduct(id) {
     window.location.href = 'productdetail.html?id=' + id;
 }
+
+// Make functions globally accessible
+window.addToCartFromSearch = addToCartFromSearch;
+window.goToPage = goToPage;
+window.viewProduct = viewProduct;

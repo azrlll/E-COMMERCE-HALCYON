@@ -182,8 +182,8 @@
     gap: 4px;
 }
 .product-rating span {
-    color: #a68a2d;
-}
+    color: #ffb800;
+    }
 .product-bottom {
     display: flex;
     justify-content: space-between;

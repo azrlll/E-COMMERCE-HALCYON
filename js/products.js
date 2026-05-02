@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (breadEl) breadEl.innerText = activeTitle.toUpperCase();
     }
 
-    // 3. Render HTML Function
+// 3. Render HTML Function
     const renderProducts = (data) => {
         if (data.length === 0) {
             grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px 0; color: #666;">No products found matching your filters.</div>`;
@@ -38,32 +38,46 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        grid.innerHTML = data.map(p => `
-            <a href="product.html?id=${p.id}" class="product-card">
+grid.innerHTML = data.map(p => `
+            <div class="product-card">
                 <div class="product-img-wrapper">
-                    ${p.badge ? `<span class="badge ${p.badgeClass}">${p.badge}</span>` : ''}
-                    <img src="${p.img}" alt="${p.name}">
+                    <a href="productdetail.html?id=${p.id}">
+                        ${p.badge ? `<span class="badge ${p.badgeClass}">${p.badge}</span>` : ''}
+                        <img src="${p.img}" alt="${p.name}">
+                    </a>
                 </div>
                 <div class="product-info-row">
-                    <div class="product-name">${p.name}</div>
-                    <div class="product-price">$${p.price.toLocaleString()}</div>
+                    <a href="productdetail.html?id=${p.id}">
+                        <div class="product-name">${p.name}</div>
+                    </a>
+                    <div class="product-price">₱${p.price.toLocaleString()}</div>
                 </div>
                 <div class="product-material">${p.material}</div>
                 <div class="product-rating">
                     <span class="filled">${'★'.repeat(Math.floor(p.rating))}</span> 
                     <span class="product-rating-count">(${p.reviews})</span>
                 </div>
-            </a>
+                <button class="btn-add-product" onclick="addItemToCart(${p.id})">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    Add to Cart
+                </button>
+            </div>
         `).join("");
         
         document.getElementById("item-count").innerText = `Showing ${data.length} items`;
     };
 
-    // 4. Multi-Filter Logic (Combines Category + Checkboxes + Search)
+// 4. Multi-Filter Logic (Combines Category + Checkboxes + Search + Price Range)
     const filterProducts = () => {
         const checkedMaterials = Array.from(document.querySelectorAll('.filter-mat:checked')).map(cb => cb.value);
         const searchInput = document.getElementById("global-search");
         const searchQuery = searchInput ? searchInput.value.toLowerCase() : "";
+        
+        // Get price range values (PHP prices now range 0 - 200000)
+        const priceMinSlider = document.getElementById('price-min');
+        const priceMaxSlider = document.getElementById('price-max');
+        const minPrice = priceMinSlider ? parseInt(priceMinSlider.value) : 0;
+        const maxPrice = priceMaxSlider ? parseInt(priceMaxSlider.value) : 200000;
 
         const filtered = products.filter(p => {
             // Check if it matches the URL category
@@ -72,8 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const matchesMaterial = checkedMaterials.length === 0 || checkedMaterials.includes(p.material);
             // Check if it matches the global header search
             const matchesSearch = p.name.toLowerCase().includes(searchQuery) || p.material.toLowerCase().includes(searchQuery);
+            // Check if it matches the price range
+            const matchesPrice = p.price >= minPrice && p.price <= maxPrice;
             
-            return matchesCategory && matchesMaterial && matchesSearch;
+            return matchesCategory && matchesMaterial && matchesSearch && matchesPrice;
         });
         
         renderProducts(filtered);

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Results - Halcyon Home</title>
     
-    <link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/cart-notification.css" />
     <link rel="stylesheet" href="css/search.css" />
 </head>
 <body>
@@ -50,18 +51,17 @@
                         </ul>
                     </div>
 
-                    <div class="filter-section">
+<div class="filter-section">
                         <h3 class="filter-heading">PRICE RANGE</h3>
                         <div class="price-slider-wrapper">
-                            <input type="range" min="500" max="5000" value="3500" class="price-slider" id="priceSlider">
                             <div class="price-slider-track">
                                 <div class="price-slider-fill" id="priceFill"></div>
                             </div>
-                            <div class="price-slider-thumb" id="priceThumb"></div>
+                            <input type="range" min="500" max="5000" value="4500" class="price-slider" id="priceSlider">
                         </div>
                         <div class="price-labels">
-                            <span>$500</span>
-                            <span id="priceValue">$3,500+</span>
+                            <span>₱50,000</span>
+                            <span id="priceValue">₱225,000+</span>
                         </div>
                     </div>
 
@@ -76,43 +76,50 @@
                         </div>
                     </div>
                     
-                    <!-- Category Filter -->
+<!-- Category Filter -->
                     <div class="filter-section">
                         <h3 class="filter-heading">CATEGORY</h3>
                         <ul class="filter-list">
                             <li>
-                                <label class="checkbox-label" data-filter="category" data-value="chairs">
+                                <label class="checkbox-label checked" data-filter="category" data-value="sofas">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-square"></span>
-                                    Chairs
+                                    Sofas & Chairs
                                 </label>
                             </li>
                             <li>
-                                <label class="checkbox-label" data-filter="category" data-value="tables">
+                                <label class="checkbox-label checked" data-filter="category" data-value="tables">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-square"></span>
                                     Tables
                                 </label>
                             </li>
                             <li>
-                                <label class="checkbox-label" data-filter="category" data-value="decoration">
+                                <label class="checkbox-label checked" data-filter="category" data-value="decor">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-square"></span>
                                     Decoration
                                 </label>
                             </li>
                             <li>
-                                <label class="checkbox-label" data-filter="category" data-value="lighting">
+                                <label class="checkbox-label checked" data-filter="category" data-value="lighting">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-square"></span>
                                     Lighting
                                 </label>
                             </li>
                             <li>
-                                <label class="checkbox-label" data-filter="category" data-value="sofas">
+                                <label class="checkbox-label checked" data-filter="category" data-value="office-chairs">
                                     <input type="checkbox" checked>
                                     <span class="checkbox-square"></span>
-                                    Sofas
+                                    Office
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-label checked" data-filter="category" data-value="bedroom">
+                                    <input type="checkbox" checked>
+                                    <span class="checkbox-square"></span>
+                                    Bedroom
                                 </label>
                             </li>
                         </ul>
@@ -183,7 +190,9 @@
 
     </main>
 
-    <script src="js/global.js"></script>
+<script src="js/global.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/products.js"></script>
     <script src="js/search.js"></script>
 </body>
 </html>

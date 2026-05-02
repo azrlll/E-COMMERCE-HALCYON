@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details - Halcyon Home</title>
     
-    <link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/cart-notification.css" />
     <link rel="stylesheet" href="css/productdetail.css" />
 </head>
 <body>
@@ -44,7 +45,7 @@
                 <h1 class="product-title">Elysian Oak Lounge Chair</h1>
                 
                 <div class="price-review-row">
-                    <span class="product-price">$1,240.00</span>
+<span class="product-price">₱69,440.00</span>
                     <div class="product-reviews">
                         <span class="stars">★★★★☆</span>
                         <span>(24 Reviews)</span>
@@ -79,8 +80,8 @@
                     </div>
                 </div>
 
-                <div class="product-actions">
-                    <button class="btn-add-cart">Add to Cart</button>
+<div class="product-actions">
+<button class="btn-add-cart" id="add-to-cart-btn" onclick="addItemToCartFromDetail(event)">Add to Cart</button>
                     <button class="btn-wishlist">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </button>
@@ -119,52 +120,95 @@
             </div>
         </div>
 
-        <section class="cross-sell">
+<section class="cross-sell">
             <h2>Complete the Room</h2>
-            <div class="cross-grid">
-                
-                <a href="#" class="cross-card">
-                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=400&q=80" alt="Cove Oak Side Table" class="cross-img">
-                    <span class="cross-tag">NEW ARRIVAL</span>
-                    <h3 class="cross-title">Cove Oak Side Table</h3>
-                    <div class="cross-price">$480.00</div>
-                </a>
-
-                <a href="#" class="cross-card">
-                    <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80" alt="Linear Brass Floor Lamp" class="cross-img">
-                    <span class="cross-tag">CURATED</span>
-                    <h3 class="cross-title">Linear Brass Floor Lamp</h3>
-                    <div class="cross-price">$320.00</div>
-                </a>
-
-                <a href="#" class="cross-card">
-                    <img src="https://images.unsplash.com/photo-1562582664-8a8803c031ca?auto=format&fit=crop&w=400&q=80" alt="Arlo Textured Wool Rug" class="cross-img">
-                    <span class="cross-tag">CLASSIC</span>
-                    <h3 class="cross-title">Arlo Textured Wool Rug</h3>
-                    <div class="cross-price">$850.00</div>
-                </a>
-
+            <div class="cross-grid" id="cross-sell-grid">
+                <!-- Cross-sell items rendered by JavaScript -->
             </div>
         </section>
 
     </main>
 
-    <script src="js/global.js"></script>
+<script src="js/global.js"></script>
     <script src="js/database.js"></script>
     <script src="js/products.js"></script>
 
-    <script>
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const accordion = header.parentElement;
-                if(accordion.classList.contains('closed')) {
-                    accordion.classList.remove('closed');
-                    accordion.classList.add('open');
-                } else {
-                    accordion.classList.remove('open');
-                    accordion.classList.add('closed');
-                }
+<script>
+        // Load product from URL on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var productId = parseInt(urlParams.get('id')) || 4; // Default to product 4
+            var product = getProductById(productId);
+            
+            if (product) {
+                // Update title
+                document.querySelector('.product-title').textContent = product.name;
+                // Update price with PHP
+                document.querySelector('.product-price').textContent = '₱' + product.price.toLocaleString() + '.00';
+                // Update description
+                document.querySelector('.product-description').textContent = product.name + ' - ' + product.material + '. ' + (product.badge ? product.badge + '. ' : '') + 'Crafted with premium materials for lasting comfort and elegance.';
+                // Update main image
+                document.querySelector('.main-image img').src = product.img;
+                // Update breadcrumb
+                document.querySelector('.breadcrumbs span').textContent = product.category.toUpperCase();
+            }
+            
+            // Accordion toggle handlers
+            document.querySelectorAll('.accordion-header').forEach(function(header) {
+                header.addEventListener('click', function() {
+                    var accordion = header.parentElement;
+                    if (accordion.classList.contains('closed')) {
+                        accordion.classList.remove('closed');
+                        accordion.classList.add('open');
+                    } else {
+                        accordion.classList.remove('open');
+                        accordion.classList.add('closed');
+                    }
+                });
             });
+        });
+        
+// Add to Cart function for product detail page
+        function addItemToCartFromDetail(event) {
+            var urlParams = new URLSearchParams(window.location.search);
+            var productId = parseInt(urlParams.get('id')) || 4; // Default to product 4
+            addItemToCart(productId, event);
+        }
+        
+        // Color/Material swatch selection - make clickable
+        document.querySelectorAll('.swatch-wrapper').forEach(function(wrapper) {
+            wrapper.style.cursor = 'pointer';
+            wrapper.addEventListener('click', function() {
+                document.querySelectorAll('.swatch-wrapper').forEach(function(w) {
+                    w.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Upholstery button selection - make clickable
+        document.querySelectorAll('.uph-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.uph-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+// Cross-sell Add to Cart buttons - make clickable
+        document.querySelectorAll('.cross-card').forEach(function(card, index) {
+            var btn = document.createElement('button');
+            btn.className = 'btn-add-product';
+            btn.style.marginTop = '12px';
+            btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg> Add';
+            btn.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var crossIds = [6, 10, 12];
+                addItemToCart(crossIds[index], e);
+            };
+            card.appendChild(btn);
         });
     </script>
 </body>

@@ -138,8 +138,11 @@ h2.section-title {
 }
 .product-rating {
     font-size: 11px;
-    color: #a1a1aa;
+    color: #ffb800;
     letter-spacing: 1px;
+}
+.product-rating .star {
+    color: #ffb800;
 }
 
 .promo-section {
@@ -226,7 +229,7 @@ h2.section-title {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 .stars {
-    color: #f5b927;
+    color: #fcd535;
     font-size: 14px;
     margin-bottom: 16px;
 }
