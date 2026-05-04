@@ -114,8 +114,12 @@ button {
     gap: 24px;
 }
 .header-search {
-    position: relative;
-}
+        position: relative;
+    }
+    
+    .header-search {
+        display: flex !important;
+    }
 .header-search input {
     background: var(--search-bg);
     border: none;

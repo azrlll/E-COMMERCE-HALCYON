@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if products array exists, if not define it
     if (typeof products === 'undefined') {
         console.log('Products not loaded from database.js');
+        grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px 0; color: #666;">Loading products...</div>`;
         return;
     }
 
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'office-chairs': 'Office Chairs'
         };
         const activeTitle = categoryTitles[currentCategory] || 'All Products';
+        const breadTitle = currentCategory ? 'ALL PRODUCTS' : 'ALL PRODUCTS';
         
         const titleEl = document.getElementById('page-title');
         const breadEl = document.getElementById('breadcrumb-current');
@@ -108,6 +110,12 @@ grid.innerHTML = data.map(p => `
             searchInput.addEventListener('input', filterProducts);
         }
     }, 100);
+    
+    // Listen for search.html global search sync
+    window.addEventListener('searchQueryUpdate', (e) => {
+        document.getElementById('global-search').value = e.detail.query;
+        filterProducts();
+    });
 
     // Run filter on load to setup the page
     filterProducts();

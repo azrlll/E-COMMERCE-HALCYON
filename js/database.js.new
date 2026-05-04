@@ -1,0 +1,169 @@
+// Cart, User, Order Management Functions
+const CART_KEY = 'halcyon_cart';
+const USER_KEY = 'halcyon_user';
+const ORDERS_KEY = 'halcyon_orders';
+
+// Get product by ID from products array
+function getProductById(id) {
+    return products.find(p => p.id === id) || null;
+}
+
+function getCart() {
+    const cart = localStorage.getItem(CART_KEY);
+    return cart ? JSON.parse(cart) : { items: [], subtotal: 0 };
+}
+
+function setCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+
+function addToCart(productId, qty = 1) {
+    // Get product details first
+    const product = getProductById(productId);
+    if (!product) {
+        console.error('Product not found:', productId);
+        return false;
+    }
+    
+    const cart = getCart();
+    const existing = cart.items.find(item => item.id === productId);
+    
+    if (existing) {
+        existing.qty += qty;
+    } else {
+        cart.items.push({ 
+            id: productId, 
+            qty: qty, 
+            price: product.price,
+            name: product.name,
+            img: product.img
+        });
+    }
+    
+    cart.subtotal = cart.items.reduce((sum, item) => sum + (item.qty * item.price), 0);
+    setCart(cart);
+    updateCartBadge();
+    return true;
+}
+
+function updateQuantity(productId, qty) {
+    const cart = getCart();
+    const item = cart.items.find(item => item.id === productId);
+    if (item) {
+        item.qty = qty;
+        if (item.qty <= 0) {
+            cart.items = cart.items.filter(i => i.id !== productId);
+        }
+        cart.subtotal = cart.items.reduce((sum, item) => sum + (item.qty * item.price), 0);
+        setCart(cart);
+        updateCartBadge();
+    }
+}
+
+function removeFromCart(productId) {
+    updateQuantity(productId, 0);
+}
+
+function clearCart() {
+    setCart({ items: [], subtotal: 0 });
+    updateCartBadge();
+}
+
+function getUser() {
+    const user = localStorage.getItem(USER_KEY);
+    return user ? JSON.parse(user) : null;
+}
+
+function saveUser(userData) {
+    localStorage.setItem(USER_KEY, JSON.stringify(userData));
+}
+
+function getOrders() {
+    const orders = localStorage.getItem(ORDERS_KEY);
+    return orders ? JSON.parse(orders) : [];
+}
+
+function saveOrder(orderData) {
+    const orders = getOrders();
+    orders.unshift(orderData);
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+}
+
+// Initialize demo cart with sample PHP items
+function initDemoCart() {
+    const demoCart = {
+        items: [
+            { id: 1, qty: 1, price: 62500 }, // Aurelia Sculptural Chair
+            { id: 4, qty: 1, price: 62000 }  // Eames Lounge Silhouette
+        ],
+        subtotal: 124500
+    };
+    setCart(demoCart);
+}
+
+// Global cart badge updater (for header)
+function updateCartBadge() {
+    const cart = getCart();
+    const badge = document.querySelector('.cart-badge');
+    if (badge) {
+        const totalQty = cart.items.reduce((sum, item) => sum + item.qty, 0);
+        badge.textContent = totalQty;
+        badge.style.display = totalQty > 0 ? 'block' : 'none';
+    }
+}
+
+// Auto-init cart badge after DOM ready (disabled demo cart auto-init)
+document.addEventListener('DOMContentLoaded', () => {
+    // Cart remains empty after items are removed - no auto-init
+    updateCartBadge();
+});
+
+// Make functions globally available
+window.getProductById = getProductById;
+window.getCart = getCart;
+window.setCart = setCart;
+window.addToCart = addToCart;
+window.updateQuantity = updateQuantity;
+window.removeFromCart = removeFromCart;
+window.clearCart = clearCart;
+window.updateCartBadge = updateCartBadge;
+window.initDemoCart = initDemoCart;
+
+// Wrapper function with notification and animations (for HTML onclick handlers)
+window.addItemToCart = function(productId, event) {
+    var product = getProductById(productId);
+    if (!product) return;
+    
+    // Handle event for animation source
+    var sourceBtn = null;
+    if (event && event.target) {
+        sourceBtn = event.target.closest('.btn-add-product') || event.target.closest('.btn-add-cart') || event.target.closest('.btn-add');
+        if (sourceBtn) {
+            sourceBtn.classList.add('clicked');
+            setTimeout(function() {
+                sourceBtn.classList.remove('clicked');
+            }, 200);
+        }
+    }
+    
+    // Add to cart
+    addToCart(productId, 1);
+    
+    // Show flying animation to cart
+    if (sourceBtn && typeof createFlyingCartAnimation === 'function') {
+        createFlyingCartAnimation(sourceBtn);
+    }
+    
+    // Animate cart badge
+    if (typeof animateCartBadge === 'function') {
+        animateCartBadge();
+    }
+    
+    // Show notification
+    if (typeof showCartNotification === 'function') {
+        showCartNotification(product.name, event);
+    }
+};
+
+// MERGED PRODUCTS ARRAY - Original + New Products from additional folder
+const products = [...ORIGINAL_PRODUCTS, ...NEW_PRODUCTS_ADDITIONAL];
