@@ -133,7 +133,7 @@ window.initDemoCart = initDemoCart;
 window.addItemToCart = function(productId, event) {
     var product = getProductById(productId);
     if (!product) return;
-    
+
     // Handle event for animation source
     var sourceBtn = null;
     if (event && event.target) {
@@ -165,7 +165,8 @@ window.addItemToCart = function(productId, event) {
     }
 };
 
-const products = [
+window.products = [
+
     // --- SOFAS & CHAIRS ---
 {
         id: 1,
