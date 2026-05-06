@@ -1,34 +1,29 @@
-// Get current page name for active state
+// Global UI helpers (header/footer injection, navigation, cart helpers)
+
+
 function getCurrentPage() {
     var path = window.location.pathname;
-    var page = path.split('/').pop() || 'index.html';
-    return page;
+    return (path.split('/').pop() || 'index.html');
 }
 
-// Set navigation active state based on current page
 function setNavActive() {
     var currentPage = getCurrentPage();
+
     var navLinks = document.querySelectorAll('.header-nav a');
-    
     if (navLinks) {
-        navLinks.forEach(function(link) {
+        navLinks.forEach(function (link) {
             link.classList.remove('active');
             var href = link.getAttribute('href');
-            if (href === currentPage) {
-                link.classList.add('active');
-            }
+            if (href === currentPage) link.classList.add('active');
         });
     }
-    
-    // Also set account dropdown active state
+
     var dropdownItems = document.querySelectorAll('.dropdown-item');
     if (dropdownItems) {
-        dropdownItems.forEach(function(item) {
+        dropdownItems.forEach(function (item) {
             item.classList.remove('active');
             var href = item.getAttribute('href');
-            if (href === currentPage && href !== '#') {
-                item.classList.add('active');
-            }
+            if (href === currentPage && href !== '#') item.classList.add('active');
         });
     }
 }
@@ -36,42 +31,32 @@ function setNavActive() {
 // Sidebar navigation for account pages
 function showSection(section) {
     var panels = document.querySelectorAll('.account-content > section, .account-content > .panel');
-    
-    // Remove active class from all sidebar links
+
     var sidebarLinks = document.querySelectorAll('.sidebar-nav a');
     if (sidebarLinks) {
-        sidebarLinks.forEach(function(link) {
+        sidebarLinks.forEach(function (link) {
             link.classList.remove('active');
         });
     }
-    
-    // Add active to clicked link (if event exists)
+
     if (window.event && window.event.target) {
         var clicked = window.event.target.closest('a');
-        if (clicked) {
-            clicked.classList.add('active');
-        }
+        if (clicked) clicked.classList.add('active');
     }
-    
-    // Show/hide panels based on section
+
     if (section === 'details') {
         if (panels) {
-            panels.forEach(function(panel, index) {
-                if (index === 0) {
-                    panel.style.display = 'block';
-                } else {
-                    panel.style.display = 'none';
-                }
+            panels.forEach(function (panel, index) {
+                panel.style.display = index === 0 ? 'block' : 'none';
             });
         }
     } else if (section === 'orders') {
         window.location.href = 'trackorder.html';
-} else if (section === 'settings') {
+    } else if (section === 'settings') {
         alert('Settings feature coming soon!');
     }
 }
 
-// Logout function
 function logout() {
     if (confirm('Are you sure you want to log out?')) {
         localStorage.removeItem('halcyon_user');
@@ -79,127 +64,75 @@ function logout() {
     }
 }
 
-// Search functionality
 function performSearch(query) {
     if (query && query.trim()) {
         window.location.href = 'search.html?query=' + encodeURIComponent(query.trim());
     }
 }
 
-// Mobile menu toggle
 function toggleMobileMenu() {
     const navUl = document.querySelector('.header-nav ul');
-    if (navUl) {
-        navUl.classList.toggle('mobile-open');
-    }
+    if (navUl) navUl.classList.toggle('mobile-open');
 }
 
-// Update cart badge
 function updateCartBadge() {
     try {
         var cart = JSON.parse(localStorage.getItem('halcyon_cart') || '{"items":[]}');
         var badge = document.querySelector('.cart-badge');
         if (badge && cart.items) {
-            var totalQty = cart.items.reduce(function(sum, item) { return sum + item.qty; }, 0);
+            var totalQty = cart.items.reduce(function (sum, item) { return sum + item.qty; }, 0);
             badge.textContent = totalQty;
             badge.style.display = totalQty > 0 ? 'block' : 'none';
         }
-    } catch(e) {
+    } catch (e) {
         console.log('Cart update error:', e);
     }
 }
 
-// Show cart notification toast with animation effect
 function showCartNotification(productName, event) {
-    // Remove existing notification if any
-    var existing = document.querySelector('.cart-notification');
-    if (existing) existing.remove();
-    
-    var notification = document.createElement('div');
-    notification.className = 'cart-notification';
-    notification.innerHTML = 
-        '<div class="cart-notif-content">' +
-            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' +
-            '<span>' + productName + ' added to cart!</span>' +
-        '</div>';
-    document.body.appendChild(notification);
-    
-    // Trigger show animation
-    setTimeout(function() {
-        notification.classList.add('show');
-    }, 10);
-    
-    // Animate the button if event provided
-    if (event && event.target) {
-        var btn = event.target.closest('.btn-add-product') || event.target.closest('.btn-add-cart') || event.target.closest('.btn-add-cart-mini');
-        if (btn) {
-            btn.classList.add('btn-clicked');
-            setTimeout(function() {
-                btn.classList.remove('btn-clicked');
-            }, 200);
-        }
-    }
-    
-    // Auto remove after 3 seconds
-    setTimeout(function() {
-        notification.classList.remove('show');
-        setTimeout(function() {
-            notification.remove();
-        }, 300);
-    }, 3000);
+    // Cart notifications removed globally.
+    return;
 }
 
-// Add to cart global handler with flying animation
 function addItemToCart(productId, event) {
-    // Get product details
     var product = getProductById(productId);
     if (!product) return;
-    
-    // Handle event for animation source
+
     var sourceBtn = null;
     if (event && event.target) {
         sourceBtn = event.target.closest('.btn-add-product');
         if (sourceBtn) {
             sourceBtn.classList.add('clicked');
-            setTimeout(function() {
+            setTimeout(function () {
                 sourceBtn.classList.remove('clicked');
             }, 200);
         }
     }
-    
-    // Add to cart
+
     if (typeof addToCart === 'function') {
         addToCart(productId, 1);
     }
-    
-    // Show flying animation to cart
+
     if (sourceBtn) {
         createFlyingCartAnimation(sourceBtn);
     }
-    
-    // Animate cart badge
+
     animateCartBadge();
-    
-    // Show notification with event for animation
     showCartNotification(product.name, event);
 }
 
-// Create flying cart animation
 function createFlyingCartAnimation(sourceBtn) {
     var cartBtn = document.querySelector('.header-icons a[href="cart.html"] .icon-btn');
     if (!cartBtn || !sourceBtn) return;
-    
-    // Get positions
+
     var sourceRect = sourceBtn.getBoundingClientRect();
     var cartRect = cartBtn.getBoundingClientRect();
-    
-    // Calculate center points
+
     var startX = sourceRect.left + sourceRect.width / 2;
     var startY = sourceRect.top + sourceRect.height / 2;
     var endX = cartRect.left + cartRect.width / 2 - startX - 15;
     var endY = cartRect.top + cartRect.height / 2 - startY + 15;
-    
-    // Create flying element
+
     var flyEl = document.createElement('div');
     flyEl.className = 'fly-to-cart';
     flyEl.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>';
@@ -210,241 +143,190 @@ function createFlyingCartAnimation(sourceBtn) {
     flyEl.style.position = 'fixed';
     flyEl.style.zIndex = '10001';
     flyEl.style.pointerEvents = 'none';
-    
+
     document.body.appendChild(flyEl);
-    
-    // Remove after animation
-    setTimeout(function() {
+
+    setTimeout(function () {
         flyEl.remove();
     }, 800);
 }
 
-// Animate cart badge bounce
 function animateCartBadge() {
     var badge = document.querySelector('.cart-badge');
     if (badge) {
         badge.classList.remove('animate');
-        // Force reflow
-        void badge.offsetWidth;
+        void badge.offsetWidth; // force reflow
         badge.classList.add('animate');
-        setTimeout(function() {
+        setTimeout(function () {
             badge.classList.remove('animate');
         }, 500);
     }
 }
 
-// Inject header and footer
-document.addEventListener("DOMContentLoaded", function() {
-    // Header HTML
-var headerHTML = 
+// Inject header + footer
+// Note: this file is loaded after DOM ready in most pages, but we keep it safe.
+document.addEventListener('DOMContentLoaded', function () {
+    var headerHTML =
         '<header id="global-header">' +
-            '<div class="header-left">' +
-                '<div class="header-logo"><a href="index.html">HALCYON HOME</a></div>' +
-                '<button class="mobile-menu-btn" aria-label="Menu">' +
-                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>' +
-                '</button>' +
-                '<nav class="header-nav">' +
-                    '<ul>' +
-                        '<li><a href="index.html">Home</a></li>' +
-                        '<li><a href="categories.html">Categories</a></li>' +
-                        '<li><a href="services.html">Services</a></li>' +
-                        '<li><a href="aboutus.html">About Us</a></li>' +
-                    '</ul>' +
-                '</nav>' +
-            '</div>' +
-            '<div class="header-right">' +
-                '<div class="header-search">' +
-                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>' +
-                    '<input type="text" placeholder="Search furniture..." id="search-input">' +
-                '</div>' +
-                '<div class="header-icons">' +
-                    '<div class="account-wrapper">' +
-                        '<button class="icon-btn" id="account-btn" aria-label="Account">' +
-                            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>' +
-                        '</button>' +
-                        '<div class="account-dropdown" id="account-dropdown">' +
-                            '<div class="dropdown-header">' +
-                                '<div class="dropdown-name">Name</div>' +
-                                '<div class="dropdown-email">email</div>' +
-                            '</div>' +
-                            '<div class="dropdown-menu">' +
-                                '<a href="details.html" class="dropdown-item">' +
-                                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>' +
-                                    '<span>Personal Details</span>' +
-                                '</a>' +
-                                '<a href="trackorder.html" class="dropdown-item">' +
-                                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"></path></svg>' +
-                                    '<span>Track Order</span>' +
-                                '</a>' +
-                                '<a href="#" class="dropdown-item logout" onclick="logout()">' +
-                                    '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>' +
-                                    '<span>Log Out</span>' +
-                                '</a>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>' +
-                    '<a href="cart.html">' +
-                        '<button class="icon-btn" aria-label="Cart">' +
-                            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>' +
-                            '<span class="cart-badge">0</span>' +
-                        '</button>' +
-                    '</a>' +
-                '</div>' +
-            '</div>' +
+        '<div class="header-left">' +
+        '<div class="header-logo"><a href="index.html">HALCYON HOME</a></div>' +
+        '<button class="mobile-menu-btn" aria-label="Menu">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>' +
+        '</button>' +
+        '<nav class="header-nav">' +
+        '<ul>' +
+        '<li><a href="index.html">Home</a></li>' +
+        '<li><a href="categories.html">Categories</a></li>' +
+        '<li><a href="services.html">Services</a></li>' +
+        '<li><a href="aboutus.html">About Us</a></li>' +
+        '</ul>' +
+        '</nav>' +
+        '</div>' +
+        '<div class="header-right">' +
+        '<div class="header-search">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>' +
+        '<input type="text" placeholder="Search furniture..." id="search-input">' +
+        '</div>' +
+        '<div class="header-icons">' +
+        '<div class="account-wrapper">' +
+        '<button class="icon-btn" id="account-btn" aria-label="Account">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>' +
+        '</button>' +
+        '<div class="account-dropdown" id="account-dropdown">' +
+        '<div class="dropdown-header">' +
+        '<div class="dropdown-name">Name</div>' +
+        '<div class="dropdown-email">email</div>' +
+        '</div>' +
+        '<div class="dropdown-menu">' +
+        '<a href="details.html" class="dropdown-item">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>' +
+        '<span>Personal Details</span>' +
+        '</a>' +
+        '<a href="trackorder.html" class="dropdown-item">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3-3m0 0l-3 3m3-3v12"></path></svg>' +
+        '<span>Track Order</span>' +
+        '</a>' +
+        '<a href="#" class="dropdown-item logout" onclick="logout()">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>' +
+        '<span>Log Out</span>' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<a href="cart.html">' +
+        '<button class="icon-btn" aria-label="Cart">' +
+        '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>' +
+        '<span class="cart-badge">0</span>' +
+        '</button>' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
         '</header>';
-    
-    // Footer HTML
-    var footerHTML = 
+
+    var footerHTML =
         '<footer id="global-footer">' +
-            '<div class="footer-container">' +
-                '<div class="footer-grid">' +
-                    '<div class="footer-col">' +
-                        '<h3>HALCYON HOME</h3>' +
-                        '<p style="max-width: 280px;">Curating the finest in modern living. Designed for comfort, built for life.</p>' +
-                    '</div>' +
-                    '<div class="footer-col">' +
-                        '<h3 class="blue-header">CONTACT US</h3>' +
-                        '<ul>' +
-                            '<li>Address</li>' +
-                            '<li>Email</li>' +
-                            '<li>Phone No.</li>' +
-                        '</ul>' +
-                    '</div>' +
-                    '<div class="footer-col">' +
-                        '<h3 class="blue-header">PAYMENTS METHODS</h3>' +
-                        '<div class="payment-methods">' +
-                            '<img src="images/payment-method-visa.png" class="pay-icon" style="background:#1434CB; padding:4px; border-radius:4px;" alt="Visa">' +
-                            '<img src="images/payment-method-mastercard.png" class="pay-icon" style="background:#000; padding:4px; border-radius:4px;" alt="Mastercard">' +
-                            '<img src="images/payment-method-gcash.png" class="pay-icon" style="background:#007DFF; padding:4px; border-radius:4px;" alt="GCash">' +
-                            '<img src="images/payment-method-maya.png" class="pay-icon" style="background:#111; padding:4px 8px; border-radius:5px;" alt="Maya">' +
-                            '<img src="images/payment-method-paypal.png" class="pay-icon" style="padding:1px;" alt="PayPal">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="footer-bottom">' +
-                    '<div class="footer-links">' +
-                        '<a href="#">PRIVACY</a>' +
-                        '<a href="#">TERMS</a>' +
-                        '<a href="#">COOKIES</a>' +
-                    '</div>' +
-                    '<div class="footer-copyright">&copy; 2026 HALCYON HOME. All rights reserved.</div>' +
-                '</div>' +
-            '</div>' +
+        '<div class="footer-container">' +
+        '<div class="footer-grid">' +
+        '<div class="footer-col">' +
+        '<h3>HALCYON HOME</h3>' +
+        '<p style="max-width: 280px;">Curating the finest in modern living. Designed for comfort, built for life.</p>' +
+        '</div>' +
+        '<div class="footer-col">' +
+        '<h3 class="blue-header">CONTACT US</h3>' +
+        '<ul>' +
+        '<li><strong>Address:</strong> Lagro Hilltop Mansion</li>' +
+        '<li><strong>Email:</strong> halcyonfurnitures@gmail.com</li>' +
+        '<li><strong>Phone no:</strong> 09138566923</li>' +
+        '</ul>' +
+        '</div>' +
+        '<div class="footer-col">' +
+        '<h3 class="blue-header">PAYMENTS METHODS</h3>' +
+        '<div class="payment-methods">' +
+        '<img src="images/payment-method-visa.png" class="pay-icon" style="background:#1434CB; padding:4px; border-radius:4px;" alt="Visa">' +
+        '<img src="images/payment-method-mastercard.png" class="pay-icon" style="background:#000; padding:4px; border-radius:4px;" alt="Mastercard">' +
+        '<img src="images/payment-method-gcash.png" class="pay-icon" style="background:#007DFF; padding:4px; border-radius:4px;" alt="GCash">' +
+        '<img src="images/payment-method-maya.png" class="pay-icon" style="background:#111; padding:4px 8px; border-radius:5px;" alt="Maya">' +
+        '<img src="images/payment-method-paypal.png" class="pay-icon" style="padding:1px;" alt="PayPal">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="footer-bottom">' +
+        '<div class="footer-links">' +
+        '<a href="#">PRIVACY</a>' +
+        '<a href="#">TERMS</a>' +
+        '<a href="#">COOKIES</a>' +
+        '</div>' +
+        '<div class="footer-copyright">&copy; 2026 HALCYON HOME. All rights reserved.</div>' +
+        '</div>' +
+        '</div>' +
         '</footer>';
-    
-    // Inject header at the top of body
+
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    // Inject footer at the bottom of body
     document.body.insertAdjacentHTML('beforeend', footerHTML);
-    
-    // Update cart badge
+
     updateCartBadge();
-    
-    // Set navigation active state
     setNavActive();
-    
-    // Search input handler
+
     var searchInput = document.getElementById('search-input');
     if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch(searchInput.value);
-            }
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') performSearch(searchInput.value);
         });
     }
-    
-    // Account dropdown toggle
+
     var accountBtn = document.getElementById('account-btn');
     var accountDropdown = document.getElementById('account-dropdown');
-    
+
     if (accountBtn && accountDropdown) {
-        accountBtn.addEventListener('click', function(e) {
+        accountBtn.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             accountDropdown.classList.toggle('show');
         });
-        
-        document.addEventListener('click', function(e) {
+
+        document.addEventListener('click', function (e) {
             if (!accountDropdown.contains(e.target) && !accountBtn.contains(e.target)) {
                 accountDropdown.classList.remove('show');
             }
         });
     }
-    
-// Make dropdown items clickable
+
     var dropdownItems = document.querySelectorAll('.dropdown-item');
     if (dropdownItems) {
-        dropdownItems.forEach(function(item) {
+        dropdownItems.forEach(function (item) {
             item.style.cursor = 'pointer';
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 var href = item.getAttribute('href');
-                if (href && href !== '#' && href !== 'javascript:void(0)') {
-                    window.location.href = href;
-                }
+                if (href && href !== '#' && href !== 'javascript:void(0)') window.location.href = href;
             });
         });
     }
-    
-    // Mobile menu button click handler
+
     var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function () {
             toggleMobileMenu();
         });
     }
 });
 
-// Wrapped in try-catch to handle if functions not yet defined
-(function() {
-    try {
-        if (typeof getCurrentPage === 'function') window.getCurrentPage = getCurrentPage;
-    } catch(e) {}
-    try {
-        if (typeof setNavActive === 'function') window.setNavActive = setNavActive;
-    } catch(e) {}
-    try {
-        if (typeof showSection === 'function') window.showSection = showSection;
-    } catch(e) {}
-    try {
-        if (typeof logout === 'function') window.logout = logout;
-    } catch(e) {}
-    try {
-        if (typeof performSearch === 'function') window.performSearch = performSearch;
-    } catch(e) {}
-    try {
-        if (typeof updateCartBadge === 'function') window.updateCartBadge = updateCartBadge;
-    } catch(e) {}
-    try {
-        if (typeof toggleMobileMenu === 'function') window.toggleMobileMenu = toggleMobileMenu;
-    } catch(e) {}
-    try {
-        if (typeof addItemToCart === 'function') window.addItemToCart = addItemToCart;
-    } catch(e) {}
-    try {
-        if (typeof showCartNotification === 'function') window.showCartNotification = showCartNotification;
-    } catch(e) {}
-    try {
-        if (typeof getProductById === 'function') window.getProductById = getProductById;
-    } catch(e) {}
-    try {
-        if (typeof getCart === 'function') window.getCart = getCart;
-    } catch(e) {}
-    try {
-        if (typeof setCart === 'function') window.setCart = setCart;
-    } catch(e) {}
-    try {
-        if (typeof addToCart === 'function') window.addToCart = addToCart;
-    } catch(e) {}
-    try {
-        if (typeof updateQuantity === 'function') window.updateQuantity = updateQuantity;
-    } catch(e) {}
-    try {
-        if (typeof removeFromCart === 'function') window.removeFromCart = removeFromCart;
-    } catch(e) {}
-    try {
-        if (typeof getOrders === 'function') window.getOrders = getOrders;
-    } catch(e) {}
-    try {
-        if (typeof saveOrder === 'function') window.saveOrder = saveOrder;
-    } catch(e) {}
+(function () {
+    try { if (typeof getCurrentPage === 'function') window.getCurrentPage = getCurrentPage; } catch (e) {}
+    try { if (typeof setNavActive === 'function') window.setNavActive = setNavActive; } catch (e) {}
+    try { if (typeof showSection === 'function') window.showSection = showSection; } catch (e) {}
+    try { if (typeof logout === 'function') window.logout = logout; } catch (e) {}
+    try { if (typeof performSearch === 'function') window.performSearch = performSearch; } catch (e) {}
+    try { if (typeof updateCartBadge === 'function') window.updateCartBadge = updateCartBadge; } catch (e) {}
+    try { if (typeof toggleMobileMenu === 'function') window.toggleMobileMenu = toggleMobileMenu; } catch (e) {}
+    try { if (typeof addItemToCart === 'function') window.addItemToCart = addItemToCart; } catch (e) {}
+    try { if (typeof showCartNotification === 'function') window.showCartNotification = showCartNotification; } catch (e) {}
+    try { if (typeof getCart === 'function') window.getCart = getCart; } catch (e) {}
+    try { if (typeof setCart === 'function') window.setCart = setCart; } catch (e) {}
+    try { if (typeof addToCart === 'function') window.addToCart = addToCart; } catch (e) {}
+    try { if (typeof updateQuantity === 'function') window.updateQuantity = updateQuantity; } catch (e) {}
+    try { if (typeof removeFromCart === 'function') window.removeFromCart = removeFromCart; } catch (e) {}
+    try { if (typeof getProductById === 'function') window.getProductById = getProductById; } catch (e) {}
+    try { if (typeof getOrders === 'function') window.getOrders = getOrders; } catch (e) {}
+    try { if (typeof saveOrder === 'function') window.saveOrder = saveOrder; } catch (e) {}
 })();
+

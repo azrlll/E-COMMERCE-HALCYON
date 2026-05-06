@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const titleEl = document.getElementById('searchQueryTitle');
     if (titleEl && urlParams.get('q')) {
-      titleEl.textContent = '"' + decodeURIComponent(urlParams.get('q')) + '"';
+    titleEl.textContent = '"' + decodeURIComponent(urlParams.get('q')) + '"';
     }
     
     renderProducts();
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Apply URL search query
     const searchQuery = urlParams.get('q') || '';
     if (searchQuery) {
-      applySearch(searchQuery);
+    applySearch(searchQuery);
     }
 });
 
@@ -104,7 +104,7 @@ function renderProducts() {
         <div class="product-card" data-id="${product.id}" onclick="viewProduct(${product.id})">
             <div class="img-wrapper">
                 ${product.tag ? `<span class="tag-limited">${product.tag}</span>` : ''}
-                <img src="${product.img}" alt="${product.name}" onerror="this.src='images/homelogo.png'">
+                <img src="${product.img}" alt="${product.name}" loading="lazy" onerror="this.src='images/homelogo.png'">
                 <button class="btn-add-cart-mini" onclick="event.stopPropagation(); addToCartFromSearch(${product.id}, event)" title="Add to Cart">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 </button>
@@ -124,10 +124,10 @@ function renderProducts() {
 // Add to cart from search
 function addToCartFromSearch(productId, event) {
     const product = getProductById(productId);
-    if (product) {
+        if (product) {
         addToCart(productId, 1);
-        if (typeof showCartNotification === 'function') showCartNotification(product.name, event);
     }
+
 }
 
 // Update Load Status
@@ -284,19 +284,56 @@ function goToPage(page) {
 function setupSort() {
     const sortSelect = document.getElementById('sortSelect');
     if (!sortSelect) return;
+
+    // Cache the original order once so "Featured" (relevance) is stable.
+    const originalOrder = filteredProducts.slice();
+
+    // Store last sort selection
+    sortSelect.dataset.activeSort = sortSelect.value;
+
     sortSelect.addEventListener('change', function() {
         const sortValue = this.value;
-        switch(sortValue) {
-            case 'price-low': filteredProducts.sort((a, b) => a.price - b.price); break;
-            case 'price-high': filteredProducts.sort((a, b) => b.price - a.price); break;
-            case 'name': filteredProducts.sort((a, b) => a.name.localeCompare(b.name)); break;
-            default: filteredProducts.sort((a, b) => a.id - b.id); break;
+
+        // Reset to original order for relevance/featured each time.
+        if (sortValue === 'relevance' || sortValue === 'best-seller' || sortValue === 'newest') {
+            filteredProducts = originalOrder.slice();
         }
+
+        switch (sortValue) {
+            case 'price-low':
+                // Low to high
+                filteredProducts.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-high':
+                // High to low
+                filteredProducts.sort((a, b) => b.price - a.price);
+                break;
+            case 'name':
+                filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+
+            // For the other options, keep safe defaults since UI says Featured
+            case 'best-seller':
+                // Best sellers are not marked in this JS view; fallback to id desc
+                filteredProducts.sort((a, b) => (b.id || 0) - (a.id || 0));
+                break;
+            case 'newest':
+                // Newest fallback to id desc
+                filteredProducts.sort((a, b) => (b.id || 0) - (a.id || 0));
+                break;
+            case 'relevance':
+            default:
+                // Featured/relevance: keep original order
+                filteredProducts = originalOrder.slice();
+                break;
+        }
+
         currentPage = 1;
         renderProducts();
         renderPagination();
     });
 }
+
 
 // View product
 function viewProduct(id) {

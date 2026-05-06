@@ -50,51 +50,8 @@
 
             <div class="section-label">CURRENT SHIPMENTS</div>
 
-            <div class="shipment-card">
-                <div class="shipment-img">
-                    <img src="images/Azure-Lounge-Chair.jpg" alt="Lounge Chair">
-                </div>
-                <div class="shipment-details">
-                    <div class="shipment-header">
-                        <span class="order-number">ORDER #HLY-88219</span>
-                        <span class="badge-transit">IN TRANSIT</span>
-                    </div>
-                    <h2 class="product-title">Sjöholm Lounge Chair — Oak</h2>
-                    
-                    <div class="progress-container">
-                        <div class="progress-line">
-                            <div class="progress-line-fill"></div>
-                        </div>
-                        <div class="progress-steps">
-                            <div class="step active">
-                                <div class="step-dot"></div>
-                                <span class="step-label">CONFIRMED</span>
-                            </div>
-                            <div class="step active">
-                                <div class="step-dot"></div>
-                                <span class="step-label">SHIPPED</span>
-                            </div>
-                            <div class="step active">
-                                <div class="step-dot"></div>
-                                <span class="step-label">TRANSIT</span>
-                            </div>
-                            <div class="step">
-                                <div class="step-dot"></div>
-                                <span class="step-label">ARRIVAL</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="expected-arrival">Expected Arrival: Thursday, Oct 24th</p>
-                    
-                    <div class="shipment-actions">
-                        <button class="btn-primary">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            View Progress
-                        </button>
-                        <button class="btn-secondary">Order Details</button>
-                    </div>
-                </div>
+            <div id="current-shipments" class="current-shipments">
+                <!-- Populated by js/trackorder.js -->
             </div>
 
             <div class="section-label dark">ORDER HISTORY</div>
@@ -153,6 +110,7 @@
     </main>
 
     <script src="js/global.js"></script>
+    <script src="js/trackorder.js"></script>
 </body>
 </html>
 

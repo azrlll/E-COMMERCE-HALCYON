@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     // Wait for global.js and database.js to load
     function initCheckout() {
         const cart = getCart();
@@ -19,14 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const taxEl = document.querySelector('.total-row:nth-child(3) span:last-child');
         const finalTotalEl = document.querySelector('.final-price');
 
-        // Map cart items to demo products (add product details)
-        const itemsWithDetails = cart.items.map(item => ({
-            ...item,
-            img: item.id === 17 ? 'images/LYSBERG-Dining-Chair.jpg' : 'images/ARÖD-Floor-Lamp.png',
-            name: item.id === 17 ? 'LYSBERG Dining Chair' : 'ARÖD Floor Lamp',
-            meta: item.id === 17 ? 'OAK / NATURAL FABRIC' : 'MATTE BLACK',
-            price: item.id === 17 ? 12400 : 4590
-        }));
+        if (!orderItemsEl || !subtotalEl || !taxEl || !finalTotalEl) return;
+
+        // Render cart items using the real product catalog
+        const itemsWithDetails = cart.items.map(cartItem => {
+            const product = getProductById(cartItem.id);
+            return {
+                ...cartItem,
+                img: product?.img || cartItem.img || 'images/homelogo.png',
+                name: product?.name || cartItem.name || 'Product',
+                meta: product?.material || cartItem.meta || 'Premium Material'
+            };
+        });
 
         orderItemsEl.innerHTML = itemsWithDetails.map(item => `
             <div class="order-item">
@@ -51,14 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
         finalTotalEl.textContent = `₱${total.toLocaleString()}.80`;
     }
 
-function initPaymentMethods() {
+    function initPaymentMethods() {
         const paymentCards = document.querySelectorAll('.payment-card');
         const cardForm = document.getElementById('card-form');
         const gcashForm = document.getElementById('gcash-form');
         const mayaForm = document.getElementById('maya-form');
         const paypalForm = document.getElementById('paypal-form');
 
-paymentCards.forEach(card => {
+        paymentCards.forEach(card => {
             card.style.cursor = 'pointer';
             card.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -156,5 +160,5 @@ paymentCards.forEach(card => {
     }
 
     // Init after short delay to ensure globals loaded
-setTimeout(initCheckout, 500);
+    setTimeout(initCheckout, 500);
 });

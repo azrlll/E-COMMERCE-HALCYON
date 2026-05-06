@@ -20,23 +20,11 @@
         <div class="product-layout">
             
             <div class="product-gallery">
-                <div class="main-image">
-                    <img src="images/Sjöholm-Lounge-Chair-Oak.png" alt="Elysian Oak Lounge Chair Main">
+                <div class="main-image">Emai
+                    <img src="images/homelogo.png" alt="Product Main">
                 </div>
-                <div class="thumbnail-list">
-                    <div class="thumbnail active">
-                        <img src="images/office-chair.jpg" alt="Thumb 1">
-                    </div>
-                    <div class="thumbnail">
-                        <img src="images/oak-chair.jpg" alt="Thumb 2">
-                    </div>
-                    <div class="thumbnail">
-                        <img src="images/Ruby-Bedside-Bench.jpg" alt="Thumb 3">
-                    </div>
-                    <div class="thumbnail">
-"images/office-chair.jpg"
-
-                    </div>
+                <div class="thumbnail-list" id="thumbnail-list">
+                    <!-- thumbnails rendered by JavaScript -->
                 </div>
             </div>
 
@@ -154,6 +142,57 @@
                 document.querySelector('.breadcrumbs span').textContent = product.category.toUpperCase();
             }
             
+            // Render thumbnails based on product image
+            var thumbnailList = document.getElementById('thumbnail-list');
+            if (thumbnailList) {
+                thumbnailList.innerHTML = '';
+                // Current catalog stores a single main image per product
+                var imgs = [product.img].filter(Boolean);
+
+                imgs.forEach(function(src, idx) {
+                    var thumb = document.createElement('div');
+                    thumb.className = 'thumbnail' + (idx === 0 ? ' active' : '');
+                    thumb.innerHTML = '<img src="' + src + '" alt="Thumbnail ' + (idx + 1) + '">';
+                    thumb.addEventListener('click', function() {
+                        document.querySelectorAll('#thumbnail-list .thumbnail').forEach(function(t) {
+                            t.classList.remove('active');
+                        });
+                        thumb.classList.add('active');
+                        document.querySelector('.main-image img').src = src;
+                    });
+                    thumbnailList.appendChild(thumb);
+                });
+            }
+
+            // Cross-sell: render a small curated set based on category
+            var crossSellGrid = document.getElementById('cross-sell-grid');
+            if (crossSellGrid && typeof getProductById === 'function' && window.products && window.products.length) {
+                // Choose related products by same category, fallback to a deterministic slice
+                var related = window.products.filter(function(p) {
+                    return p.category === product.category && p.id !== product.id;
+                }).slice(0, 6);
+
+                if (related.length < 3) {
+                    related = window.products.filter(function(p) { return p.id !== product.id; }).slice(0, 6);
+                }
+
+                crossSellGrid.innerHTML = related.map(function(p) {
+                    return '<a class="cross-card" href="productdetail.html?id=' + p.id + '" data-id="' + p.id + '">' +
+                        '<div class="cross-img-wrap">' +
+                            (p.badge ? '<span class="badge ' + (p.badgeClass || '') + '">' + p.badge + '</span>' : '') +
+                            '<img src="' + p.img + '" alt="' + p.name + '">' +
+                        '</div>' +
+                        '<div class="cross-info">' +
+                            '<div class="cross-name">' + p.name + '</div>' +
+                            '<div class="cross-price">₱' + p.price.toLocaleString() + '</div>' +
+                        '</div>' +
+                    '</a>';
+                }).join('');
+
+                // Add to cart buttons inside cards
+                // (btn is appended in the existing block below; ensure cards exist first)
+            }
+
             // Accordion toggle handlers
             document.querySelectorAll('.accordion-header').forEach(function(header) {
                 header.addEventListener('click', function() {

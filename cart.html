@@ -152,11 +152,11 @@ function renderCartItems() {
         }
         
         function removeItem(productId) {
-            if (confirm('Remove this item from your cart?')) {
-                removeFromCart(productId);
-                renderCartItems();
-            }
+            // No confirmation: immediate removal per UX request
+            removeFromCart(productId);
+            renderCartItems();
         }
+
         
 function updateCartSummary() {
             var cart = getCart();

@@ -223,9 +223,48 @@
                         </div>
                     </div>
 
+                    <div class="service-selections">
+                        <h3 class="service-title">Add White‑Glove Services</h3>
+
+                        <div class="service-option">
+                            <label class="service-checkbox">
+                                <input type="checkbox" id="service-consult" checked />
+                                <span>Design Consultation</span>
+                            </label>
+
+                            <div class="service-fields">
+                                <input type="date" id="consult-date" class="form-control" />
+                                <select id="consult-designer" class="form-control">
+                                    <option value="any" selected>Any available designer</option>
+                                    <option value="designer-1">Halcyon Designer 1</option>
+                                    <option value="designer-2">Halcyon Designer 2</option>
+                                </select>
+                                <input type="text" id="consult-notes" class="form-control" placeholder="Notes (e.g., living room mood, style, measurements)" />
+                            </div>
+                        </div>
+
+                        <div class="service-option">
+                            <label class="service-checkbox">
+                                <input type="checkbox" id="service-delivery" checked />
+                                <span>White‑Glove Delivery & Installation</span>
+                            </label>
+
+                            <div class="service-fields">
+                                <input type="date" id="delivery-date" class="form-control" />
+                                <select id="delivery-window" class="form-control">
+                                    <option value="morning" selected>Morning (8:00–12:00)</option>
+                                    <option value="afternoon">Afternoon (12:00–4:00)</option>
+                                    <option value="evening">Evening (4:00–7:00)</option>
+                                </select>
+                                <input type="text" id="delivery-access" class="form-control" placeholder="Access notes (e.g., elevator, parking, gate code)" />
+                            </div>
+                        </div>
+                    </div>
+
 <button class="btn-complete" onclick="completePurchase()">Complete Purchase</button>
                     
                     <div class="secure-badge">
+
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         Secure encrypted checkout
                     </div>
@@ -268,64 +307,112 @@ else if (method === 'paypal' && paypalForm) paypalForm.style.display = 'block';
 
     // Complete Purchase - saves order to localStorage
     function completePurchase() {
-        // Get delivery details
-        var firstName = document.querySelector('input[value="Kevin Christopher"]').value;
-        var lastName = document.querySelector('input[value="Real"]').value;
-        var email = document.querySelector('input[type="email"]').value;
-        var phone = document.querySelector('input[type="tel"]').value;
-        var apartment = document.querySelector('input[placeholder="Unit 1204, Azure Tower"]').value;
-        var city = document.querySelector('input[value="Quezon City"]').value;
-        var postal = document.querySelector('input[placeholder="1400"]').value;
-        var region = document.querySelector('select').value;
-        
-        // Get selected payment method
+        // NOTE: checkout.js also has its own initCheckout logic.
+        // We keep this function single-source by creating order data from the real cart.
+
+        // Delivery/customer details (match HTML inputs)
+        var deliveryForm = document.querySelector('.checkout-forms');
+        var firstName = deliveryForm ? deliveryForm.querySelector('.form-row input:nth-child(1)') : null;
+        // Fallback to the previous selectors if the structure changes
+        var firstNameVal = deliveryForm?.querySelector('input[placeholder], input.form-control')?.value;
+
+        // Use robust placeholders/labels from the current markup
+        var inputs = document.querySelectorAll('.checkout-forms .form-control');
+        // Specific fields
+        var firstNameField = document.querySelector('.checkout-forms .form-row input.form-control[value]');
+        var firstNameTxt = document.querySelector('input[value="Kevin Christopher"]')?.value || (firstNameField ? firstNameField.value : '');
+        var lastNameTxt = document.querySelector('input[value="Real"]')?.value || '';
+        var email = document.querySelector('input[type="email"]')?.value || '';
+        var phone = document.querySelector('input[type="tel"]')?.value || '';
+        var apartment = document.querySelector('input[placeholder="Unit 1204, Azure Tower"]')?.value || '';
+        var city = document.querySelector('input[placeholder], input[value="Quezon City"]')?.value || '';
+        var postal = document.querySelector('input[placeholder="1400"]')?.value || '';
+        var region = document.querySelector('select')?.value || '';
+
+        // Payment method
         var activeCard = document.querySelector('.payment-card.active');
-        var paymentMethod = activeCard ? activeCard.querySelector('.payment-name').textContent : 'Credit / Debit Card';
-        
-        // Get order totals from summary
-        var subtotal = 16990;
-        var tax = 2038.80;
-        var total = 19028.80;
-        
-        // Create order object
+        var paymentMethod = activeCard ? activeCard.querySelector('.payment-name').textContent.trim() : 'Credit / Debit Card';
+
+        // Cart + totals
+        var cart = (typeof getCart === 'function') ? getCart() : { items: [], subtotal: 0 };
+        var subtotal = cart.subtotal || 0;
+        var tax = Math.round(subtotal * 0.12);
+        var total = subtotal + tax;
+
+        // Service selections
+        var consultEnabled = document.getElementById('service-consult')?.checked;
+        var deliveryEnabled = document.getElementById('service-delivery')?.checked;
+
+        var orderServices = {
+            designConsultation: null,
+            whiteGloveDelivery: null
+        };
+
+        if (consultEnabled) {
+            orderServices.designConsultation = {
+                booked: true,
+                date: document.getElementById('consult-date')?.value || '',
+                designer: document.getElementById('consult-designer')?.value || 'any',
+                notes: document.getElementById('consult-notes')?.value || ''
+            };
+        }
+
+        if (deliveryEnabled) {
+            orderServices.whiteGloveDelivery = {
+                booked: true,
+                date: document.getElementById('delivery-date')?.value || '',
+                window: document.getElementById('delivery-window')?.value || 'morning',
+                accessNotes: document.getElementById('delivery-access')?.value || ''
+            };
+        }
+
+        // Create order object (use cart item details)
+        var orderItems = (cart.items || []).map(function(item) {
+            var product = (typeof getProductById === 'function') ? getProductById(item.id) : null;
+            return {
+                id: item.id,
+                name: product?.name || item.name || 'Product',
+                qty: item.qty,
+                price: item.price,
+                img: product?.img || item.img || 'images/homelogo.png',
+                meta: product?.material || item.meta || 'Premium Material'
+            };
+        });
+
         var order = {
             id: 'ORD-' + Date.now(),
             date: new Date().toISOString(),
             customer: {
-                firstName: firstName,
-                lastName: lastName,
+                firstName: firstNameTxt,
+                lastName: lastNameTxt,
                 email: email,
                 phone: phone,
-                address: apartment + ', ' + city + ' ' + postal,
+                address: apartment ? (apartment + ', ' + city + ' ' + postal).trim() : '',
                 region: region
             },
-            items: [
-                { name: 'LYSBERG Dining Chair', qty: 2, price: 12400 },
-                { name: 'ARÖD Floor Lamp', qty: 1, price: 4590 }
-            ],
+            items: orderItems,
             subtotal: subtotal,
             tax: tax,
             shipping: 'FREE',
             total: total,
             paymentMethod: paymentMethod,
-            status: 'Processing'
+            status: 'Processing',
+            services: orderServices
         };
-        
+
         // Save to localStorage orders array
         var orders = JSON.parse(localStorage.getItem('halcyon_orders') || '[]');
         orders.unshift(order);
         localStorage.setItem('halcyon_orders', JSON.stringify(orders));
-        
+
         // Clear cart
         localStorage.setItem('halcyon_cart', JSON.stringify({ items: [], subtotal: 0 }));
-        
-        // Update cart badge
         if (typeof updateCartBadge === 'function') updateCartBadge();
-        
-        // Show success and redirect
+
         alert('Order placed successfully! Order ID: ' + order.id);
         window.location.href = 'trackorder.html';
     }
+
     </script>
     <script src="js/products.js"></script>
     <script src="js/checkout.js"></script>

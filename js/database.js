@@ -1,4 +1,4 @@
-// Cart, User, Order Management Functions
+    // Cart, User, Order Management Functions
 const CART_KEY = 'halcyon_cart';
 const USER_KEY = 'halcyon_user';
 const ORDERS_KEY = 'halcyon_orders';
@@ -159,10 +159,10 @@ window.addItemToCart = function(productId, event) {
         animateCartBadge();
     }
     
-    // Show notification
-    if (typeof showCartNotification === 'function') {
-        showCartNotification(product.name, event);
-    }
+    // Show notification (disabled globally)
+    // Cart notifications removed per requirement.
+    
+    // (intentionally no-op)
 };
 
 window.products = [
@@ -390,7 +390,7 @@ window.products = [
         material: "Solid Walnut",
         rating: 4.7,
         reviews: 45,
-        img: "images/additional/35 beds/idanaes-bed-frame-white-luroey__0916067_pe784943_s5.jpg",
+img: "images/idanaes-bed-frame-white-luroey__0916067_pe784943_s5.jpg",
         badge: "",
         badgeClass: "",
     },
@@ -402,7 +402,7 @@ window.products = [
         material: "Solid Oak",
         rating: 4.9,
         reviews: 32,
-        img: "images/additional/35 beds/malm-bed-frame-high-white-luroey__0637620_pe704551_s5.jpg",
+img: "images/malm-bed-frame-high-white-luroey__0637620_pe704551_s5.jpg",
         badge: "",
         badgeClass: "",
     },
@@ -414,7 +414,7 @@ window.products = [
         material: "Memory Foam",
         rating: 4.8,
         reviews: 156,
-        img: "images/additional/35 beds/nordli-bed-frame-with-storage-and-mattress-with-headboard-white-vagstranda-medium-firm__1236226_pe917502_s5.jpg",
+img: "images/nordli-bed-frame-with-storage-and-mattress-with-headboard-white-vagstranda-medium-firm__1236226_pe917502_s5.jpg",
         badge: "NEW ARRIVAL",
         badgeClass: "badge-yellow",
     },
@@ -440,7 +440,7 @@ window.products = [
         material: "Glass & Steel",
         rating: 4.9,
         reviews: 28,
-        img: "images/additional/35 decorations/lindasen-display-shelf-anthracite__1157649_pe887800_s5.jpg",
+img: "images/lindasen-display-shelf-anthracite__1157649_pe887800_s5.jpg",
         badge: "",
         badgeClass: "",
     },
@@ -452,7 +452,7 @@ window.products = [
         material: "Birch Wood",
         rating: 4.5,
         reviews: 112,
-        img: "images/additional/35 decorations/knoppaeng-frame-with-poster-set-of-8-folk-tales__1392157_pe966019_s5.jpg",
+img: "images/knoppaeng-frame-with-poster-set-of-8-folk-tales__1392157_pe966019_s5.jpg",
         badge: "",
         badgeClass: "",
     },
@@ -478,7 +478,8 @@ window.products = [
         material: "Aluminum",
         rating: 4.8,
         reviews: 76,
-        img: "images/additional/20 chairs/vihals-chair-white__1370478_pe958751_s5.jpg",
+        img: "images/vihals-chair-white__1370478_pe958751_s5.jpg",
+
         badge: "NEW ARRIVAL",
         badgeClass: "badge-yellow",
     },
@@ -528,7 +529,8 @@ window.products = [
         material: "Walnut & Marble",
         rating: 4.8,
         reviews: 23,
-        img: "images/additional/35 tables/kallax-desk-white__1327543_pe944490_s5.jpg",
+        img: "images/kallax-desk-white__1327543_pe944490_s5.jpg",
+
         badge: "",
         badgeClass: "",
     },
@@ -542,8 +544,9 @@ window.products = [
         material: "Bouclé Fabric",
         rating: 4.7,
         reviews: 124,
-        img: "images/additional/20 chairs/lisabo-chair-ash__0786549_pe763015_s5.jpg",
+        img: "images/lisabo-chair-ash__0786549_pe763015_s5.jpg",
         badge: "NEW ARRIVAL",
+
         badgeClass: "badge-yellow",
     },
     {
@@ -554,8 +557,9 @@ window.products = [
         material: "Linen",
         rating: 4.9,
         reviews: 67,
-        img: "images/additional/20 chairs/marius-stool-black__0727386_pe735638_s5.jpg",
+        img: "images/marius-stool-black__0727386_pe735638_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
     {
@@ -566,8 +570,9 @@ window.products = [
         material: "Wool Blend",
         rating: 4.6,
         reviews: 98,
-        img: "images/additional/20 chairs/ensholm-chair-green-outdoor__1236722_pe917719_s5.jpg",
+        img: "images/ensholm-chair-green-outdoor__1236722_pe917719_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
 
@@ -580,8 +585,9 @@ window.products = [
         material: "Glass & Wood",
         rating: 4.8,
         reviews: 45,
-        img: "images/additional/35 decorations/blodloenn-mirror__0637766_pe698589_s5.jpg",
+        img: "images/blodloenn-mirror__0637766_pe698589_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
     {
@@ -592,8 +598,9 @@ window.products = [
         material: "Art Print",
         rating: 4.5,
         reviews: 78,
-        img: "images/additional/35 decorations/bjoernamo-art-print-on-hollow-wood-eggs__1098390_pe865373_s5.jpg",
+        img: "images/bjoernamo-art-print-on-hollow-wood-eggs__1098390_pe865373_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
     {
@@ -604,8 +611,9 @@ window.products = [
         material: "Seagrass",
         rating: 4.7,
         reviews: 156,
-        img: "images/additional/35 decorations/fejka-artificial-potted-plant-indoor-outdoor-grass__0130933_pe285358_s5.jpg",
+        img: "images/fejka-artificial-potted-plant-indoor-outdoor-grass__0130933_pe285358_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
 
@@ -618,8 +626,9 @@ window.products = [
         material: "Brushed Brass",
         rating: 4.8,
         reviews: 234,
-        img: "images/additional/35 lightings/agunnaryd-pendant-lamp-with-3-lamps-black__0859557_pe782370_s5.jpg",
+        img: "images/agunnaryd-pendant-lamp-with-3-lamps-black__0859557_pe782370_s5.jpg",
         badge: "BEST SELLER",
+
         badgeClass: "badge-blue",
     },
     {
@@ -630,8 +639,9 @@ window.products = [
         material: "Matte Black",
         rating: 4.6,
         reviews: 89,
-        img: "images/additional/35 lightings/barlast-led-ceiling-wall-lamp-white__0772861_pe756185_s5.jpg",
+        img: "images/barlast-led-ceiling-wall-lamp-white__0772861_pe756185_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
     {
@@ -642,8 +652,9 @@ window.products = [
         material: "Ceramic",
         rating: 4.9,
         reviews: 167,
-        img: "images/additional/35 lightings/akterspring-pendant-lamp-opal-glass-brass-plated__1416206_pe975488_s5.jpg",
+        img: "images/akterspring-pendant-lamp-opal-glass-brass-plated__1416206_pe975488_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
 
@@ -656,8 +667,9 @@ window.products = [
         material: "Marble & Steel",
         rating: 4.7,
         reviews: 56,
-        img: "images/additional/35 tables/alex-desk-white__0977658_pe813725_s5.jpg",
+        img: "images/alex-desk-white__0977658_pe813725_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
     {
@@ -668,8 +680,9 @@ window.products = [
         material: "Tempered Glass",
         rating: 4.5,
         reviews: 89,
-        img: "images/additional/35 tables/lisabo-table-ash-veneer__0737105_pe740883_s5.jpg",
+        img: "images/lisabo-table-ash-veneer__0737105_pe740883_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
 
@@ -898,8 +911,9 @@ window.products = [
         material: "Fabric",
         rating: 4.5,
         reviews: 42,
-        img: "images/additional/20 chairs/vihals-chair-white__1370478_pe958751_s5.jpg",
+        img: "images/vihals-chair-white__1370478_pe958751_s5.jpg",
         badge: "",
+
         badgeClass: "",
     },
 
